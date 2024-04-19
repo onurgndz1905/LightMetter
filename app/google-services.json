@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1004447357964",
+    "project_id": "light-meter-c85be",
+    "storage_bucket": "light-meter-c85be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004447357964:android:0bdade327a85e0fc26e229",
+        "android_client_info": {
+          "package_name": "com.lux.light.meter.luminosity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4HXIS_GYhcbFRG-DtrPv5tCFpZx_cT6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

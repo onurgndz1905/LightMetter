@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="defaultbutton">#3D4045</color>
+    <color name="orange">#EA580C</color>
+    <color name="gray">#9CA3AF</color>
+    <color name="onboarding1">#C33438</color>
+    <color name="onboarding2">#C35F34</color>
+    <color name="onboarding3">#2632A1</color>
+    <color name="buttoncolor">#202020</color>
+    <color name="orange2">#FB923C</color>
+    <color name="orange3">#F97316</color>
+    <color name="grayradiusbutton">#202020</color>
+    <color name="red_delete">#DC2626</color>
+    <color name="text_delete">#BBBBBB</color>
+    <color name="switch_color">#FDBA74</color>
+    <color name="switchicon_color">#EA580C</color>
+    <color name="switch_color_off">#1E1E1E</color>
+    <color name="color_paywal_text">#FCFCFC</color>
+    <color name="color_paywall_monthly_text">#808080</color>
+    <color name="history_details">#373B54</color>
+
+
+
+
+    <color name="background_paywall_button">#151515</color>
+
+
+
+
+</resources>
