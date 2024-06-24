@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.lux.light.meter.luminosity.MainActivity
 import com.lux.light.meter.luminosity.R
 import com.lux.light.meter.luminosity.adapter.LightDataAdapter
 import com.lux.light.meter.luminosity.applovin.InterstitialAdManager
@@ -38,7 +39,7 @@ class HistoryFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentHistoryBinding.inflate(layoutInflater,container,false)
 
-        interstitialAdManager = InterstitialAdManager(this)
+        interstitialAdManager = InterstitialAdManager(requireContext())
 
         return binding.root
     }
@@ -49,7 +50,7 @@ class HistoryFragment : Fragment() {
 
         lightDataViewModel = ViewModelProvider(this).get(LightDataViewModel::class.java)
 
-        lightDataAdapter = LightDataAdapter(lightDataViewModel,requireContext(),requireFragmentManager()) // LightDataAdapter'ı oluştururken lightDataViewModel'ı geçin
+        lightDataAdapter = LightDataAdapter(lightDataViewModel,requireContext(),getChildFragmentManager())
 
         binding.rvhistory.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -64,11 +65,14 @@ class HistoryFragment : Fragment() {
             if (lightDataList.isEmpty()) {
                 // Liste boş ise bir metin göster
                 binding.historyImage.visibility = View.VISIBLE
+                binding.textHistory.visibility = View.VISIBLE
+
 
             } else {
                 // Liste dolu ise verileri RecyclerView'e gönder
                 binding.rvhistory.visibility = View.VISIBLE
                 binding.historyImage.visibility = View.GONE
+                binding.textHistory.visibility = View.GONE
 
                 lightDataAdapter.submitList(lightDataList)
             }

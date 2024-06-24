@@ -1,5 +1,8 @@
 package com.lux.light.meter.luminosity.applovin
 
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.util.Log
 import androidx.fragment.app.Fragment
 import com.applovin.mediation.MaxAd
@@ -12,21 +15,26 @@ import com.lux.light.meter.luminosity.fragment.LightmeterFragment
 import com.lux.light.meter.luminosity.`object`.Addisplay
 import com.lux.light.meter.luminosity.`object`.Advert
 import com.lux.light.meter.luminosity.`object`.ClickController
+import com.lux.light.meter.luminosity.`object`.IsPremium
 import java.util.concurrent.TimeUnit
 
-class InterstitialAdManager(private val fragment: Fragment) : MaxAdListener {
+class InterstitialAdManager(private val context: Context) : MaxAdListener {
 
     private lateinit var interstitialAd: MaxInterstitialAd
     private var retryAttempt = 0.0
     private var isAdLoaded = false
     private var isAdDisplayed = false
     private lateinit var binding: FragmentLightmeterBinding
-    private  var LightmeterFragment =LightmeterFragment()
 
     fun loadInterstitialAd() {
-        interstitialAd = MaxInterstitialAd("86893fda715a18da", fragment.requireActivity())
-        interstitialAd.setListener(this)
-        interstitialAd.loadAd()
+
+        val activity = context as? Activity
+        activity?.let {
+            interstitialAd = MaxInterstitialAd("86893fda715a18da", it)
+            interstitialAd.setListener(this)
+            interstitialAd.loadAd()
+        }
+
     }
 
     override fun onAdLoaded(maxAd: MaxAd) {
@@ -66,39 +74,30 @@ class InterstitialAdManager(private val fragment: Fragment) : MaxAdListener {
         this.binding = binding
     }
     fun showInterstitialAd() {
-        if (Addisplay.number_of_ad_impressions  % ClickController.click_count_control ==0) {
-
-            Log.e("reklam hatası","${Addisplay.number_of_ad_impressions},${ClickController.click_count_control}")
+        if (ClickController.click_count_control != 0 && Addisplay.number_of_ad_impressions % ClickController.click_count_control == 0 && IsPremium.is_premium== false) {
+            Log.e("reklam hatası", "${Addisplay.number_of_ad_impressions},${ClickController.click_count_control}")
             if (::interstitialAd.isInitialized && interstitialAd.isReady) {
                 interstitialAd.showAd()
                 (binding.lineChart as LineChart).clear()
                 (binding.lineChart as LineChart).invalidate()
-                Log.e(
-                    "reklam hatası", "tıklama 3ün katı oldu " +
-                            "Interstitial ad not ready or failed to load"
-                )
-
-
+                Log.e("reklam hatası", "tıklama 3ün katı oldu " + "Interstitial ad not ready or failed to load")
+            } else {
+                // Reklam hazır değilse veya yüklenmediyse bir hata işleyebilirsiniz
+                Log.e("reklam hatası", "Interstitial ad not ready or failed to load")
             }
-        }
-        else {
-            // Reklam hazır değilse veya yüklenmediyse bir hata işleyebilirsiniz
-            Log.e("reklam hatası", "Interstitial ad not ready or failed to load")
+        } else {
+            // ClickController.click_count_control sıfır olduğunda bir hata oluşmasını engellemek için bir işlem yapabilirsiniz
+            Log.e("reklam hatası", "ClickController.click_count_control is zero or Addisplay.number_of_ad_impressions is not divisible by ClickController.click_count_control")
         }
     }
+
+    @SuppressLint("LogNotTimber")
     fun showInterstitialAdnotlinechart() {
-        if (Addisplay.number_of_ad_impressions  % ClickController.click_count_control ==0) {
+        if (ClickController.click_count_control != 0 && Addisplay.number_of_ad_impressions % ClickController.click_count_control == 0 && IsPremium.is_premium== false) {
 
             Log.e("reklam hatası","${Addisplay.number_of_ad_impressions},${ClickController.click_count_control}")
             if (::interstitialAd.isInitialized && interstitialAd.isReady) {
                 interstitialAd.showAd()
-
-                Log.e(
-                    "reklam hatası", "tıklama 3ün katı oldu " +
-                            "Interstitial ad not ready or failed to load"
-                )
-
-
             }
         }
         else {
@@ -108,13 +107,9 @@ class InterstitialAdManager(private val fragment: Fragment) : MaxAdListener {
     }
     fun showInterstitialAdone() {
 
-        if (::interstitialAd.isInitialized && interstitialAd.isReady) {
+        if (::interstitialAd.isInitialized && interstitialAd.isReady && !IsPremium.is_premium) {
                 interstitialAd.showAd()
                 Log.e("reklam hatası", "reklam yükleniyor")
-
-
-
-
         } else {
             // Reklam hazır değilse veya yüklenmediyse bir hata işleyebilirsiniz
             Log.e("reklam hatası", "Interstitial ad not ready or failed to load")

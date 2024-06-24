@@ -58,7 +58,7 @@
     <string name="light_bad">您需要提高光照水平。</string>
     <string name="lightmeter_pro">光度计专业版</string>
     <string name="premium_theme">高级主题</string>
-    <string name="enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci">Enim maecenas in cras cursus. Faucibus urna vitae etiam pellentesque orci.</string>
+    <string name="enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci">从特殊主题中更详细地查看光值。</string>
     <string name="no_ads">无广告</string>
     <string name="detail">详细信息</string>
     <string name="access_saved_light_meter_details">访问保存的光度计详细信息。</string>
@@ -75,4 +75,16 @@
     <string name="min">最小值</string>
     <string name="go_premium">升级到高级版</string>
     <string name="view_other_themes">查看其他主题。</string>
+    <string name="save_your_light_meter_value_measurement_and_access_the_data_whenever_you_want">保存您的测光表值测量值并随时访问数据。</string>
+    <string name="review_your_records_and_history">查看您的记录和历史记录！</string>
+    <string name="skip">跳过</string>
+    <string name="continue2">继续</string>
+    <string name="follow_light_meter_values_instantly">立即跟踪测光表值！</string>
+    <string name="intervene_in_your_environment_and_create_a_more_comfortable_environment_with_instant_light_value_information">干预您的环境，并通过即时光值信息创造更舒适的环境。</string>
+    <string name="customizable_settings_are_under_your_control">可自定义的设置由您控制！</string>
+    <string name="continue_taking_your_measurements_without_watching_ads">继续测量而不观看广告。</string>
+    <string name="weekly">每周</string>
+    <string name="per_weekly">每周</string>
+    <string name="try_or_Free">“免费试用三天”</string>
+    <string name="Contiune">继续</string>
 </resources>

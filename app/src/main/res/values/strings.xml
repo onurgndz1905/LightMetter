@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">LightMeter</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -57,7 +57,7 @@
     <string name="light_bad">You need to raise your light level.</string>
     <string name="lightmeter_pro">Lightmeter Pro</string>
     <string name="premium_theme">Premium Theme</string>
-    <string name="enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci">Enim maecenas in cras cursus. Faucibus urna vitae etiam pellentesque orci.</string>
+    <string name="enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci">See the light value in more detail from special themes.</string>
     <string name="no_ads">No-ads</string>
     <string name="detail">Detail</string>
     <string name="access_saved_light_meter_details">Access saved light meter details.</string>
@@ -74,4 +74,16 @@
     <string name="min">Min</string>
     <string name="go_premium">Go Premium</string>
     <string name="view_other_themes">View other themes.</string>
+    <string name="save_your_light_meter_value_measurement_and_access_the_data_whenever_you_want">Save your light meter value measurement and access the data whenever you want.</string>
+    <string name="review_your_records_and_history">Review Your Records and History!</string>
+    <string name="skip">Skip</string>
+    <string name="continue2">Continue</string>
+    <string name="follow_light_meter_values_instantly">Follow Light Meter Values Instantly!</string>
+    <string name="intervene_in_your_environment_and_create_a_more_comfortable_environment_with_instant_light_value_information">Intervene in your environment and create a more comfortable environment with instant light value information.</string>
+    <string name="customizable_settings_are_under_your_control" tools:ignore="MissingTranslation">Customizable Settings Are Under Your Control!</string>
+    <string name="continue_taking_your_measurements_without_watching_ads">Continue taking your measurements without watching ads.</string>
+    <string name="weekly">Weekly</string>
+    <string name="per_weekly">Per Weekly</string>
+    <string name="try_or_Free">"Try Three Days Free"</string>
+    <string name="Contiune">Continue</string>
 </resources>

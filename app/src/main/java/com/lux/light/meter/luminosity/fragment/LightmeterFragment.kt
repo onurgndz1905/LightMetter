@@ -12,12 +12,14 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -49,12 +51,12 @@ import com.lux.light.meter.luminosity.`object`.Unit
 import com.lux.light.meter.luminosity.paywall.PaywallFragment
 import com.lux.light.meter.luminosity.viewmodel.LightDataViewModel
 import com.lux.light.meter.luminosity.viewmodel.PaywallViewModel
+import com.lux.light.meter.luminosity.viewmodel.PaywallViewModel2
 import com.lux.light.meter.luminosity.viewmodel.SensorAvgViewModel
 import com.lux.light.meter.luminosity.viewmodel.SensorDataViewModel
 import com.lux.light.meter.luminosity.viewmodel.SensorMaxDataViewModel
 import com.lux.light.meter.luminosity.viewmodel.SensorMinDataViewModel
 import java.util.Timer
-import java.util.concurrent.TimeUnit
 import kotlin.concurrent.timerTask
 
 
@@ -68,7 +70,6 @@ class LightmeterFragment : Fragment(), SensorEventListener {
     private var startTime = 0L
     private val interval = 10000L // 10 saniye
     private var timer: Timer? = null
-    private var isMeasurementRunning = true
     private var minLightValue = Float.MAX_VALUE
     private var maxLightValue = Float.MIN_VALUE
     private var sumLightValue = 0f
@@ -81,6 +82,7 @@ class LightmeterFragment : Fragment(), SensorEventListener {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var interstitialAdManager: InterstitialAdManager
     private lateinit var paywallViewModel: PaywallViewModel
+    private lateinit var paywallviemodel2: PaywallViewModel2
 
     private val fragmentList = listOf(
         CustomProgress1Fragment(),
@@ -93,15 +95,20 @@ class LightmeterFragment : Fragment(), SensorEventListener {
 
 
 
-    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentLightmeterBinding.inflate(inflater, container, false)
+        // Düğmeye tıklama olayını burada bağladığınızdan emin olun
+        binding.buttonstartstop.setOnClickListener {
+            Log.d("ButtonClicked", "Button clickesad")
 
-        interstitialAdManager = InterstitialAdManager(this)
+            // İşlemler burada olacak
+        }
+        interstitialAdManager = InterstitialAdManager(requireContext())
         interstitialAdManager.setBinding(binding)
+        Unit.paywallclick =true
 
         // Make sure to set the mediation provider value to "max" to ensure proper functionality
         AppLovinSdk.getInstance( context ).setMediationProvider( "max" )
@@ -109,7 +116,11 @@ class LightmeterFragment : Fragment(), SensorEventListener {
             // AppLovin SDK is initialized, start loading ads
         })
 
-   // Yanıp sönen noktayı oluştur
+
+        paywallviemodel2 = ViewModelProvider(requireActivity()).get(PaywallViewModel2::class.java)
+
+
+        // Yanıp sönen noktayı oluştur
         val dotAnimator = ObjectAnimator.ofFloat(binding.textanimation, "alpha", 0f, 1f)
         dotAnimator.duration = 500 // Yanıp sönme süresi (milisaniye cinsinden)
         dotAnimator.repeatCount = ObjectAnimator.INFINITE // Sonsuz tekrar
@@ -133,43 +144,37 @@ class LightmeterFragment : Fragment(), SensorEventListener {
         sensorMaxDataViewModel = ViewModelProvider(requireActivity()).get(SensorMaxDataViewModel::class.java)
         sensorAvgViewModel = ViewModelProvider(requireActivity()).get(SensorAvgViewModel::class.java)
 
-        binding.buttonRestart.setOnClickListener {
-            restartMeasurement()
-            Addisplay.number_of_ad_impressions ++
-            showInterstitialAdOnClick()
-
-        }
-        val drawableplay: Drawable? = resources.getDrawable(R.drawable.play)
-        val drawablepause: Drawable? = resources.getDrawable(R.drawable.pause)
-
-        Log.e("click_count_control","${ ClickController.click_count_control }")
 
 
 
         binding.buttonstartstop.setOnClickListener {
+            Log.d("ButtonClicked", "Button clicked")
 
-            isMeasurementRunning = !isMeasurementRunning // Durum tersine çevir
-            if (isMeasurementRunning) {
-                startMeasurement()
-                binding.buttonstartstop.text = getString(R.string.Pause_test)
-                binding.buttonstartstop.setCompoundDrawablesWithIntrinsicBounds(drawablepause, null, null, null)
-
-                dotAnimator.start()
-            } else {
+            if (Unit.isMeasurementRunning) {
                 stopMeasurement()
                 binding.buttonstartstop.text = getString(R.string.start_test)
-                binding.buttonstartstop.setCompoundDrawablesWithIntrinsicBounds(drawableplay, null, null, null)
-
-                dotAnimator.cancel()
-
-
+                dotAnimator.cancel() // Yanıp sönen animasyonu durdur
+                Log.d("ButtonClicked", "Measurement stopped")
+            } else {
+                startMeasurement()
+                binding.buttonstartstop.text = getString(R.string.Pause_test)
+                dotAnimator.start() // Yanıp sönen animasyonu başlat
+                Log.d("ButtonClicked", "Measurement started")
             }
-            Addisplay.number_of_ad_impressions ++
-            showInterstitialAdOnClick()
 
-
-
+            Unit.isMeasurementRunning = !Unit.isMeasurementRunning // Durumu tersine çevir
+            Log.d("ButtonClicked", "isMeasurementRunning: ${Unit.isMeasurementRunning}")
         }
+
+
+// Kullanıcı etkileşiminden sonra marquee'nin çalıştığından emin olun
+        binding.buttonRestart.setOnClickListener {
+            restartMeasurement()
+            Addisplay.number_of_ad_impressions++
+            showInterstitialAdOnClick()
+        }
+
+
 
 
 
@@ -192,9 +197,9 @@ class LightmeterFragment : Fragment(), SensorEventListener {
                 } else {
                     replaceFragment(fragmentList[currentFragmentIndex])
                 }
-                binding.imageButtonBack.visibility = View.VISIBLE
+
                 if (currentFragmentIndex == 4) {
-                    binding.imageButtonNext.visibility = View.GONE
+
                 }
                 // Değişikliği objeye kaydediyoruz
                 CurrentIndex.setCurrentIndex(requireContext(), currentFragmentIndex)
@@ -204,7 +209,7 @@ class LightmeterFragment : Fragment(), SensorEventListener {
         }
 
         binding.imageButtonBack.setOnClickListener {
-            binding.imageButtonNext.visibility = View.VISIBLE
+
 
             if (currentFragmentIndex > 0) {
                 currentFragmentIndex--
@@ -216,7 +221,7 @@ class LightmeterFragment : Fragment(), SensorEventListener {
                 }
 
                 if (currentFragmentIndex <= 0) {
-                    binding.imageButtonBack.visibility = View.GONE
+
                 }
                 // Değişikliği objeye kaydediyoruz
                 CurrentIndex.setCurrentIndex(requireContext(), currentFragmentIndex)
@@ -226,23 +231,23 @@ class LightmeterFragment : Fragment(), SensorEventListener {
         }
 
         replaceFragment(fragmentList[currentFragmentIndex])
-        binding.imageButtonBack.visibility = View.GONE
 
 
-       // replaceFragment(CustomProgress1Fragment())
+
 
         paywallViewModel = ViewModelProvider(requireActivity()).get(PaywallViewModel::class.java)
+
 
         paywallViewModel.booleanLiveData.observe(viewLifecycleOwner, Observer { newValue ->
             if (newValue) {
                 // Paywall gösterilsin
                 replacepaywalFragment(PaywallFragment())
-                binding.lightScreenIn.visibility = View.VISIBLE // LightScreenIn'ı gizle
-                binding.lightScreenInIn.visibility = View.GONE
+                binding.fullscrennn.visibility = View.VISIBLE // LightScreenIn'ı gizle
+               binding.lightScreenIn.visibility = View.GONE
             } else {
                 // Paywall gizlensin
-                binding.lightScreenIn.visibility = View.GONE // LightScreenIn'ı göster
-                binding.lightScreenInIn.visibility = View.VISIBLE
+                binding.fullscrennn.visibility = View.GONE // LightScreenIn'ı göster
+                binding.lightScreenIn.visibility = View.VISIBLE
 
             }
         })
@@ -262,21 +267,27 @@ class LightmeterFragment : Fragment(), SensorEventListener {
 
         lightDataViewModel = ViewModelProvider(this).get(LightDataViewModel::class.java)
         binding.SaveButton.setOnClickListener {
-            val dateTime = DateTimeUtil.getCurrentDateTime()
+            if (!IsPremium.is_premium){
+                paywallViewModel.setBooleanValue(true)
 
-            val lightData = LightData(
-                minLightValue = minLightValue,
-                maxLightValue = maxLightValue,
-                avgLightValue = sumLightValue / numMeasurements,
-                timestamp = System.currentTimeMillis(), // Opsiyonel, zaman damgası eklemek istemiyorsanız burayı değiştirin
-                recordingDate = dateTime
+            }
+            else{
+                val dateTime = DateTimeUtil.getCurrentDateTime()
 
-            )
-            lightDataViewModel.insert(lightData)
-            Toast.makeText(requireContext(), getString(R.string.data_saved), Toast.LENGTH_SHORT).show()
-            Log.e("lightdata","${lightData}")
-            Addisplay.number_of_ad_impressions++
-            showInterstitialAdOnClick()
+                val lightData = LightData(
+                    minLightValue = minLightValue,
+                    maxLightValue = maxLightValue,
+                    avgLightValue = if (numMeasurements != 0) sumLightValue / numMeasurements else 0.0f,
+                    timestamp = System.currentTimeMillis(), // Opsiyonel, zaman damgası eklemek istemiyorsanız burayı değiştirin
+                    recordingDate = dateTime
+
+                )
+                lightDataViewModel.insert(lightData)
+                Toast.makeText(requireContext(), getString(R.string.data_saved), Toast.LENGTH_SHORT).show()
+                Addisplay.number_of_ad_impressions++
+                showInterstitialAdOnClick()
+            }
+
 
         }
 
@@ -289,7 +300,7 @@ class LightmeterFragment : Fragment(), SensorEventListener {
     }
     private fun replacepaywalFragment(fragment: Fragment) {
         childFragmentManager.beginTransaction()
-            .replace(R.id.light_Screen_in, fragment)
+            .replace(R.id.fullscrennn, fragment)
             .commit()
     }
 
@@ -305,7 +316,7 @@ class LightmeterFragment : Fragment(), SensorEventListener {
     }
 
 
-    //reklam Interstitial
+        //reklam Interstitial
 
     private fun showInterstitialAdOnClick() {
         interstitialAdManager.loadInterstitialAd()
@@ -435,7 +446,7 @@ class LightmeterFragment : Fragment(), SensorEventListener {
             }
         }
         else{
-            binding.buttonstartstop.text = getString(R.string.start_test)
+          //  binding.buttonstartstop.text = getString(R.string.start_test)
         }
 
     }
@@ -463,7 +474,6 @@ class LightmeterFragment : Fragment(), SensorEventListener {
             lineData.notifyDataChanged()
             chart?.notifyDataSetChanged()
             chart?.invalidate()
-
         } else {
             dataSet = LineDataSet(entries, "Işık Değeri")
             dataSet?.color = Color.parseColor("#EA580C")
@@ -473,13 +483,18 @@ class LightmeterFragment : Fragment(), SensorEventListener {
             dataSet?.cubicIntensity = 0.4f
             dataSet?.setDrawCircles(false) // Yuvarlakların çizilmesi
             dataSet?.circleColors = listOf(Color.YELLOW) // Yuvarlağın rengini değiştirme
-
             dataSet?.valueTextColor = Color.TRANSPARENT // Veri metninin rengini sıfıra ayarla
+
+            // Degrade dolguyu ayarla
+            val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.gradient)
+            dataSet?.setDrawFilled(true)
+            dataSet?.fillDrawable = drawable
 
             val lineData = LineData(dataSet)
             chart?.data = lineData
         }
     }
+
     private fun startUpdatingDateTime() {
         timer = Timer()
         timer?.scheduleAtFixedRate(timerTask {
@@ -500,9 +515,5 @@ class LightmeterFragment : Fragment(), SensorEventListener {
         timer?.cancel()
         timer = null
     }
-
-
-
-
 
 }

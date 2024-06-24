@@ -10,10 +10,10 @@ import java.io.Serializable
 data class LightData(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val minLightValue: Float,
-    val maxLightValue: Float,
-    @ColumnInfo(defaultValue = "0.0") // Örnek olarak, 0.0 değeri verildi
-    val avgLightValue: Float,
+    val minLightValue: Float?,
+    val maxLightValue: Float?,
+    @ColumnInfo(defaultValue = "0.0")
+    val avgLightValue: Float?,
     val timestamp: Long,
     val recordingDate: String
 ) : Serializable

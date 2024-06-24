@@ -10,7 +10,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_marginTop="0dp"
         android:src="@drawable/onboarding2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,8 +24,11 @@
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Skip"
-        android:background="@drawable/onboardingbutton"
+        android:text="@string/skip"
+        android:backgroundTint="@color/onboarding2"
+        app:cornerRadius="4dp"
+        android:textColor="@color/white"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +40,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
-        android:text="Review Your Records and History!"
+        android:text="@string/review_your_records_and_history"
         android:textColor="@color/white"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -52,7 +55,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
-        android:text="Save your light meter value measurement and access the data whenever you want."
+        android:text="@string/save_your_light_meter_value_measurement_and_access_the_data_whenever_you_want"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/buttoncontiontwo"
@@ -66,8 +69,11 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/onboardingbutton"
-        android:text="Continue"
+        android:backgroundTint="#924523"
+        app:cornerRadius="4dp"
+        android:textColor="@color/white"
+
+        android:text="@string/continue2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

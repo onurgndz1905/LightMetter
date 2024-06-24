@@ -9,6 +9,11 @@
     tools:context=".fragment.RecommendFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/paywall_Screen_recommend"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recommend_home_in"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -66,15 +71,20 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints">
 
+
+
+
+
                 <TextView
+                    android:id="@+id/textView27"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="Study Desk"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/study_desk"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
                     android:id="@+id/study_desk_details"
@@ -117,11 +127,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/living_room"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -135,6 +145,48 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout_studydesk"
                 tools:ignore="MissingConstraints">
+
+
+                <eightbitlab.com.blurview.BlurView
+                    android:id="@+id/blurView_study_desk_premium_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHeight_percent="0.5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/study_desk_premium_icon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/premium_logo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/PROtex2"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/PROtex2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PRO"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/study_desk_premium_icon"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/study_desk_premium_icon"
+                            app:layout_constraintTop_toTopOf="@+id/study_desk_premium_icon" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </eightbitlab.com.blurview.BlurView>
 
                 <ImageButton
                     android:id="@+id/study_desk_details2"
@@ -152,11 +204,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="Study Desk"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/study_desk"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -171,6 +223,8 @@
                 app:layout_constraintStart_toStartOf="@+id/constraintLayout_living_room"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout_living_room"
                 tools:ignore="MissingConstraints">
+
+
 
                 <ImageButton
                     android:id="@+id/library_details"
@@ -188,11 +242,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/library"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -208,6 +262,48 @@
                 app:layout_constraintStart_toStartOf="@+id/constraintLayout_living_room"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout_living_room"
                 tools:ignore="MissingConstraints">
+
+                <eightbitlab.com.blurview.BlurView
+                    android:id="@+id/blurViewlibraryy33_desk_premium_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHeight_percent="0.5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/slibraty_desk_premium_icon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/premium_logo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/pro_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="PRO"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/slibraty_desk_premium_icon"
+                            app:layout_constraintStart_toEndOf="@+id/slibraty_desk_premium_icon"
+                            app:layout_constraintTop_toTopOf="@+id/slibraty_desk_premium_icon" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </eightbitlab.com.blurview.BlurView>
 
                 <ImageButton
                     android:id="@+id/library_details3"
@@ -225,11 +321,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/library"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -243,6 +339,47 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
                 tools:ignore="MissingConstraints">
 
+                <eightbitlab.com.blurview.BlurView
+                    android:id="@+id/blurView_library3_premium_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHeight_percent="0.5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <ImageView
+                            android:id="@+id/library3_premium_iconpremium_icon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/premium_logo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/PROtex3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="PRO"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/library3_premium_iconpremium_icon"
+                            app:layout_constraintStart_toEndOf="@+id/library3_premium_iconpremium_icon"
+                            app:layout_constraintTop_toTopOf="@+id/library3_premium_iconpremium_icon" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </eightbitlab.com.blurview.BlurView>
                 <ImageButton
                     android:id="@+id/library_details2"
                     android:layout_width="24dp"
@@ -259,11 +396,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/library"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -277,6 +414,50 @@
                 app:layout_constraintStart_toStartOf="@+id/study_Desk_layout"
                 app:layout_constraintTop_toBottomOf="@+id/study_Desk_layout"
                 tools:ignore="MissingConstraints">
+
+
+                <eightbitlab.com.blurview.BlurView
+                    android:id="@+id/blurView_hotel_premium_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHeight_percent="0.5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+
+                        <ImageView
+                            android:id="@+id/hotel_premium_iconpremium_icon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/premium_logo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/PROtex4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="PRO"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/hotel_premium_iconpremium_icon"
+                            app:layout_constraintStart_toEndOf="@+id/hotel_premium_iconpremium_icon"
+                            app:layout_constraintTop_toTopOf="@+id/hotel_premium_iconpremium_icon" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </eightbitlab.com.blurview.BlurView>
 
                 <ImageButton
                     android:id="@+id/hotel_details"
@@ -294,11 +475,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/hotel"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -312,6 +493,46 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayoutotel"
                 tools:ignore="MissingConstraints">
 
+                <eightbitlab.com.blurview.BlurView
+                    android:id="@+id/blurView_bathroom"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHeight_percent="0.5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/PROtex5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="PRO"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/bathroom_iconpremium_icon"
+                            app:layout_constraintStart_toEndOf="@+id/bathroom_iconpremium_icon"
+                            app:layout_constraintTop_toTopOf="@+id/bathroom_iconpremium_icon"
+                            app:layout_constraintVertical_bias="1.0" />
+
+                        <ImageView
+                            android:id="@+id/bathroom_iconpremium_icon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/premium_logo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </eightbitlab.com.blurview.BlurView>
                 <ImageButton
                     android:id="@+id/bathroom_details"
                     android:layout_width="24dp"
@@ -328,11 +549,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/bathroom"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -346,6 +567,46 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayoutlibrary"
                 tools:ignore="MissingConstraints">
 
+                <eightbitlab.com.blurview.BlurView
+                    android:id="@+id/blurView_kitcheen_premium_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHeight_percent="0.5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/PROtext6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="PRO"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/kitcheen_premium_iconpremium_icon"
+                            app:layout_constraintStart_toEndOf="@+id/kitcheen_premium_iconpremium_icon"
+                            app:layout_constraintTop_toTopOf="@+id/kitcheen_premium_iconpremium_icon" />
+
+                        <ImageView
+                            android:id="@+id/kitcheen_premium_iconpremium_icon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/premium_logo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </eightbitlab.com.blurview.BlurView>
                 <ImageButton
                     android:id="@+id/kitchen_details"
                     android:layout_width="24dp"
@@ -362,11 +623,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/kitchen"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -380,6 +641,45 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayoutkitcheen"
                 tools:ignore="MissingConstraints">
 
+                <eightbitlab.com.blurview.BlurView
+                    android:id="@+id/blurView_locker_premium_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHeight_percent="0.5">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/PROtext7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="PRO"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremium_iconpremium_icon"
+                            app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremium_iconpremium_icon"
+                            app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremium_iconpremium_icon" />
+
+                        <ImageView
+                            android:id="@+id/kitcheen_aspremium_iconpremium_icon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/premium_logo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </eightbitlab.com.blurview.BlurView>
                 <ImageButton
                     android:id="@+id/locker_room_details"
                     android:layout_width="24dp"
@@ -396,11 +696,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/locker_room"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -413,7 +713,44 @@
                 app:layout_constraintStart_toStartOf="@+id/constraintLayoutlockerroom"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayoutlockerroom"
                 tools:ignore="MissingConstraints">
+                <eightbitlab.com.blurview.BlurView
+                    android:id="@+id/classroom"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHeight_percent="0.5">
 
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/PROtext8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="PRO"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremium_iconpremium_icon32"
+                            app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremium_iconpremium_icon32"
+                            app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremium_iconpremium_icon32" />
+
+                        <ImageView
+                            android:id="@+id/kitcheen_aspremium_iconpremium_icon32"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/premium_logo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </eightbitlab.com.blurview.BlurView>
                 <ImageButton
                     android:id="@+id/classroom_details"
                     android:layout_width="24dp"
@@ -430,11 +767,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/classroom"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -448,6 +785,45 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayoutclassroom"
                 tools:ignore="MissingConstraints">
 
+                <eightbitlab.com.blurview.BlurView
+                    android:id="@+id/blurView_gym_premium_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHeight_percent="0.5">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/PROtext9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="PRO"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremium_iconpremiumasd_icon32"
+                            app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremium_iconpremiumasd_icon32"
+                            app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremium_iconpremiumasd_icon32" />
+
+                        <ImageView
+                            android:id="@+id/kitcheen_aspremium_iconpremiumasd_icon32"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/premium_logo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </eightbitlab.com.blurview.BlurView>
                 <ImageButton
                     android:id="@+id/gym_details"
                     android:layout_width="24dp"
@@ -464,11 +840,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/gym"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -481,6 +857,45 @@
                 app:layout_constraintStart_toStartOf="@+id/constraintLayoutbathroom"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayoutbathroom"
                 tools:ignore="MissingConstraints">
+
+                <eightbitlab.com.blurview.BlurView
+                    android:id="@+id/blurView_cafetirai_premium_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHeight_percent="0.5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/PROtext10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="PRO"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremdsium_iconpremiumasd_icon32"
+                            app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremdsium_iconpremiumasd_icon32"
+                            app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremdsium_iconpremiumasd_icon32" />
+
+                        <ImageView
+                            android:id="@+id/kitcheen_aspremdsium_iconpremiumasd_icon32"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/premium_logo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </eightbitlab.com.blurview.BlurView>
 
                 <ImageButton
                     android:id="@+id/caffeteria_details"
@@ -498,11 +913,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/cafetaria"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -516,6 +931,44 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayoutcafeteria"
                 tools:ignore="MissingConstraints">
 
+                <eightbitlab.com.blurview.BlurView
+                    android:id="@+id/blurView_dining_roompremium_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHeight_percent="0.5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/PROtext11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="PRO"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremdsium_iconpremiumassdd_icon32"
+                            app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremdsium_iconpremiumassdd_icon32"
+                            app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremdsium_iconpremiumassdd_icon32" />
+
+                        <ImageView
+                            android:id="@+id/kitcheen_aspremdsium_iconpremiumassdd_icon32"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/premium_logo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </eightbitlab.com.blurview.BlurView>
                 <ImageButton
                     android:id="@+id/dinning_room_Details"
                     android:layout_width="24dp"
@@ -532,11 +985,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/dinning_room"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

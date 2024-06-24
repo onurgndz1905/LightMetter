@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Lichtmesser</string>
     <!-- TODO: Platzhaltertext entfernen oder ändern -->
     <string name="hello_blank_fragment">Hallo leeres Fragment</string>
@@ -58,7 +58,7 @@
     <string name="light_bad">Sie müssen Ihren Lichtpegel erhöhen.</string>
     <string name="lightmeter_pro">Lichtmesser Pro</string>
     <string name="premium_theme">Premium-Design</string>
-    <string name="enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci">Enim maecenas in cras cursus. Faucibus urna vitae etiam pellentesque orci.</string>
+    <string name="enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci">Sehen Sie sich den Lichtwert in den Spezialthemen genauer an.</string>
     <string name="no_ads">Keine Werbung</string>
     <string name="detail">Detail</string>
     <string name="access_saved_light_meter_details">Zugriff auf gespeicherte Lichtmesser-Details.</string>
@@ -75,4 +75,16 @@
     <string name="min">Min</string>
     <string name="go_premium">Premium-Mitgliedschaft</string>
     <string name="view_other_themes">Andere Designs anzeigen.</string>
+    <string name="save_your_light_meter_value_measurement_and_access_the_data_whenever_you_want">Speichern Sie Ihre Lichtmesser-Messwerte und greifen Sie auf die Daten zu, wann immer Sie wollen.</string>
+    <string name="review_your_records_and_history">Überprüfen Sie Ihre Aufzeichnungen und Ihren Verlauf!</string>
+    <string name="skip">Überspringen</string>
+    <string name="continue2">Fortfahren</string>
+    <string name="follow_light_meter_values_instantly">Verfolgen Sie Lichtmesser-Werte sofort!</string>
+    <string name="intervene_in_your_environment_and_create_a_more_comfortable_environment_with_instant_light_value_information">Greifen Sie in Ihre Umgebung ein und schaffen Sie eine angenehmere Umgebung mit sofortigen Lichtwertinformationen.</string>
+    <string name="customizable_settings_are_under_your_control">Anpassbare Einstellungen stehen unter Ihrer Kontrolle!</string>
+    <string name="continue_taking_your_measurements_without_watching_ads">Nehmen Sie weiterhin Messungen vor, ohne Werbung anzusehen.</string>
+    <string name="weekly">Wöchentlich</string>
+    <string name="per_weekly">Pro Woche</string>
+    <string name="try_or_Free">"Drei Tage kostenlos testen"</string>
+    <string name="Continue" tools:ignore="ExtraTranslation">Weiter</string>
 </resources>

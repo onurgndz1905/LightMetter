@@ -58,7 +58,7 @@
     <string name="light_bad">Necesita aumentar su nivel de luz.</string>
     <string name="lightmeter_pro">Medidor de luz Pro</string>
     <string name="premium_theme">Tema Premium</string>
-    <string name="enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci">Enim maecenas in cras cursus. Faucibus urna vitae etiam pellentesque orci.</string>
+    <string name="enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci">Vea el valor de la luz con más detalle a partir de temas especiales.</string>
     <string name="no_ads">Sin anuncios</string>
     <string name="detail">Detalle</string>
     <string name="access_saved_light_meter_details">Acceder a los detalles del medidor de luz guardados.</string>
@@ -75,4 +75,16 @@
     <string name="min">Mín</string>
     <string name="go_premium">Ir Premium</string>
     <string name="view_other_themes">Ver otros temas.</string>
+    <string name="save_your_light_meter_value_measurement_and_access_the_data_whenever_you_want">Guarda la medición del valor de tu fotómetro y accede a los datos cuando quieras.</string>
+    <string name="review_your_records_and_history">¡Revise sus registros y su historial!</string>
+    <string name="skip">Omitir</string>
+    <string name="continue2">Continuar</string>
+    <string name="follow_light_meter_values_instantly">¡Sigue los valores del fotómetro al instante!</string>
+    <string name="intervene_in_your_environment_and_create_a_more_comfortable_environment_with_instant_light_value_information">Intervenga en su entorno y cree un ambiente más cómodo con información instantánea sobre el valor de la luz.</string>
+    <string name="customizable_settings_are_under_your_control">¡Las configuraciones personalizables están bajo tu control!</string>
+    <string name="continue_taking_your_measurements_without_watching_ads">Continúe tomando sus medidas sin ver anuncios.</string>
+    <string name="weekly">Hebdomadaire</string>
+    <string name="per_weekly">Par semaine</string>
+    <string name="try_or_Free">"Essayez trois jours gratuits"</string>
+    <string name="Contiune">Continuer</string>
 </resources>

@@ -25,7 +25,7 @@
     <string name="max">Maks</string>
     <string name="duration">Süre</string>
     <string name="start_test">Testi Başlat</string>
-    <string name="restart_test">Testi Yeniden Başlat</string>
+    <string name="restart_test">Yeniden Başlat</string>
     <string name="save_test">Testi Kaydet</string>
     <string name="stop">Durdur</string>
     <string name="lux">Lux</string>
@@ -56,7 +56,7 @@
     <string name="light_bad">Işık seviyenizi yükseltmeniz gerekiyor.</string>
     <string name="lightmeter_pro">Işık Ölçer Pro</string>
     <string name="premium_theme">Premium Tema</string>
-    <string name="enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci">Enim maecenas in cras cursus. Faucibus urna vitae etiam pellentesque orci.</string>
+    <string name="enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci">Özel temalardan ışık değerini daha detaylı görün.</string>
     <string name="no_ads">Reklamsız</string>
     <string name="detail">Detay</string>
     <string name="access_saved_light_meter_details">Kaydedilen ışık ölçer detaylarına erişin.</string>
@@ -73,4 +73,16 @@
     <string name="min">Min</string>
     <string name="go_premium">Premiuma Geç</string>
     <string name="view_other_themes">Diğer temalara göz atın.</string>
+    <string name="save_your_light_meter_value_measurement_and_access_the_data_whenever_you_want">Işık ölçer değer ölçümünüzü kaydedin ve verilere istediğiniz zaman erişin.</string>
+    <string name="review_your_records_and_history">Kayıtlarınızı ve Geçmişinizi İnceleyin!</string>
+    <string name="skip">Atla</string>
+    <string name="continue2">Devam et</string>
+    <string name="follow_light_meter_values_instantly">Işık Ölçer Değerlerini Anında Takip Edin!</string>
+    <string name="intervene_in_your_environment_and_create_a_more_comfortable_environment_with_instant_light_value_information">Ortamınıza müdahale edin ve anlık ışık değeri bilgileriyle daha konforlu bir ortam yaratın.</string>
+    <string name="weekly">Haftalık</string>
+    <string name="per_weekly">Haftalık Başına</string>
+    <string name="try_or_Free">"Üç Gün Ücretsiz Deneyin"</string>
+    <string name="Contiune">Devam et</string>
+    <string name="customizable_settings_are_under_your_control">Özelleştirilebilir Ayarlar Sizin Kontrolünüzde!</string>
+    <string name="continue_taking_your_measurements_without_watching_ads">Reklam izlemeden ölçümlerinizi yapmaya devam edin.</string>
 </resources>

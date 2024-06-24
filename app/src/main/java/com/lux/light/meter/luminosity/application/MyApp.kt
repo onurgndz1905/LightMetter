@@ -3,9 +3,6 @@ package com.lux.light.meter.luminosity.application
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
-import com.android.billingclient.api.BillingClient
-import com.android.billingclient.api.QueryPurchaseHistoryParams
 import com.applovin.sdk.AppLovinSdk
 import com.applovin.sdk.AppLovinSdkConfiguration
 import com.google.android.gms.tasks.OnCompleteListener
@@ -14,14 +11,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.lux.light.meter.luminosity.applovin.ExampleAppOpenManager
 import com.lux.light.meter.luminosity.`object`.ClickController
 import com.lux.light.meter.luminosity.`object`.CurrentIndex
-import com.lux.light.meter.luminosity.`object`.IsPremium
-import com.revenuecat.purchases.CustomerInfo
 import com.revenuecat.purchases.Package
-import com.revenuecat.purchases.PackageType
-import com.revenuecat.purchases.PurchaseParams
-import com.revenuecat.purchases.Purchases
-import com.revenuecat.purchases.models.StoreTransaction
-import com.revenuecat.purchases.purchaseWith
 import java.util.concurrent.Executors
 
 class MyApp : Application() {

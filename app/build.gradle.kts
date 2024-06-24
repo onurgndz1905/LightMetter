@@ -16,10 +16,10 @@ android {
     }
     defaultConfig {
         applicationId = "com.lux.light.meter.luminosity"
-        minSdk = 24
+        minSdk = 23
         targetSdk = 34
-        versionCode = 3
-        versionName = "1.0.2"
+        versionCode = 11
+        versionName = "1.1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -98,5 +98,10 @@ dependencies {
 
     implementation("com.android.billingclient:billing:6.2.0")
     implementation("com.android.billingclient:billing-ktx:6.2.0")
+
+
+    //blur
+    implementation( "com.github.Dimezis:BlurView:version-2.0.3")
+
 
 }

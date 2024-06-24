@@ -14,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.charts.LineChart
@@ -84,7 +85,7 @@ class RecommendedLightFragment : Fragment(), SensorEventListener {
         // Inflate the layout for this fragment
         binding = FragmentRecommendedLightBinding.inflate(inflater, container, false)
         chart = binding.lineChartRecommended // chart bileşenini bağlayın
-        interstitialAdManager = InterstitialAdManager(this)
+        interstitialAdManager = InterstitialAdManager(requireContext())
         initializeChart() // Grafik bileşenlerini başlatın
         sensorDataViewModel = ViewModelProvider(requireActivity()).get(SensorDataViewModel::class.java)
         sensorManager =
@@ -156,9 +157,7 @@ class RecommendedLightFragment : Fragment(), SensorEventListener {
                 } else {
                     replaceFragment(fragmentList[currentFragmentIndex])
                 }
-                binding.imageButtonBack.visibility = View.VISIBLE
                 if (currentFragmentIndex == 4) {
-                    binding.imageButtonNext.visibility = View.GONE
                 }
                 // Değişikliği objeye kaydediyoruz
                 CurrentIndex.setCurrentIndex(requireContext(), currentFragmentIndex)
@@ -170,7 +169,6 @@ class RecommendedLightFragment : Fragment(), SensorEventListener {
         }
 
         binding.imageButtonBack.setOnClickListener {
-            binding.imageButtonNext.visibility = View.VISIBLE
 
             if (currentFragmentIndex > 0) {
                 currentFragmentIndex--
@@ -182,7 +180,6 @@ class RecommendedLightFragment : Fragment(), SensorEventListener {
                 }
 
                 if (currentFragmentIndex <= 0) {
-                    binding.imageButtonBack.visibility = View.GONE
                 }
                 // Değişikliği objeye kaydediyoruz
                 CurrentIndex.setCurrentIndex(requireContext(), currentFragmentIndex)
@@ -191,7 +188,6 @@ class RecommendedLightFragment : Fragment(), SensorEventListener {
             showInterstitialAdOnClick()
         }
         replaceFragment(fragmentList[currentFragmentIndex])
-        binding.imageButtonBack.visibility = View.GONE
 
 
         binding.imageButtonBackRecommendFragment.setOnClickListener {
@@ -565,6 +561,11 @@ class RecommendedLightFragment : Fragment(), SensorEventListener {
             dataSet?.setDrawCircles(false)
             dataSet?.circleColors = listOf(Color.YELLOW)
             dataSet?.valueTextColor = Color.TRANSPARENT
+
+            // Degrade dolguyu ayarla
+            val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.gradient)
+            dataSet?.setDrawFilled(true)
+            dataSet?.fillDrawable = drawable
 
             val lineData = LineData(dataSet)
             chart?.data = lineData

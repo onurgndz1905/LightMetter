@@ -10,6 +10,7 @@ import com.applovin.mediation.MaxAdListener
 import com.applovin.mediation.MaxError
 import com.applovin.mediation.ads.MaxAppOpenAd
 import com.applovin.sdk.AppLovinSdk
+import com.lux.light.meter.luminosity.`object`.IsPremium
 
 class ExampleAppOpenManager(private val context: Context) : LifecycleObserver, MaxAdListener {
     private val appOpenAd: MaxAppOpenAd
@@ -24,9 +25,9 @@ class ExampleAppOpenManager(private val context: Context) : LifecycleObserver, M
     }
 
     private fun showAdIfReady() {
-        if (appOpenAd == null || !AppLovinSdk.getInstance(context).isInitialized()) return
+        if (appOpenAd == null || !AppLovinSdk.getInstance(context).isInitialized() && IsPremium.is_premium== false) return
 
-        if (appOpenAd.isReady()) {
+        if (appOpenAd.isReady() && IsPremium.is_premium== false) {
             appOpenAd.showAd(ADS_UNIT)
         } else {
             appOpenAd.loadAd()

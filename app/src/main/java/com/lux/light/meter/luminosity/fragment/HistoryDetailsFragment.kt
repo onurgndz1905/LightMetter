@@ -55,7 +55,7 @@ class HistoryDetailsFragment : Fragment() {
     ): View? {
         binding = FragmentHistoryDetailsBinding.inflate(inflater, container, false)
         val lightData = arguments?.getSerializable(ARG_LIGHT_DATA) as? LightData
-        interstitialAdManager = InterstitialAdManager(this)
+        interstitialAdManager = InterstitialAdManager(requireContext())
 
 
         lightDataViewModel = ViewModelProvider(this).get(LightDataViewModel::class.java)
@@ -131,13 +131,13 @@ class HistoryDetailsFragment : Fragment() {
     // Veri setini oluştur
         val entries = mutableListOf<Entry>()
         if (lightData != null) {
-            entries.add(Entry(1f, lightData.minLightValue))
+            entries.add(Entry(1f, lightData.minLightValue ?:0f))
         } // Örnek bir veri noktası
         if (lightData != null) {
-            entries.add(Entry(2f, lightData.avgLightValue))
+            entries.add(Entry(2f, lightData.avgLightValue ?: 0f))
         } // Örnek bir veri noktası
         if (lightData != null) {
-            entries.add(Entry(3f, lightData.maxLightValue))
+            entries.add(Entry(3f, lightData.maxLightValue ?:0f))
         } // Örnek bir veri noktası
 
         val dataSet = LineDataSet(entries, "Label") // Veri seti oluştur

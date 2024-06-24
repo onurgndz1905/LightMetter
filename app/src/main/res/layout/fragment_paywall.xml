@@ -7,6 +7,16 @@
     android:background="@drawable/paywall1"
     tools:context=".paywall.PaywallFragment">
 
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/premiumbg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageButton
         android:id="@+id/close_paywall_fragment"
@@ -26,23 +36,24 @@
         android:id="@+id/textviewPro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="8dp"
         android:text="@string/lightmeter_pro"
         android:textColor="@color/orange"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="24dp"
-        android:src="@drawable/thema"
-        app:layout_constraintBottom_toBottomOf="@+id/textView21"
+        android:src="@drawable/premium_icon1"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView20"
+        app:layout_constraintTop_toBottomOf="@+id/textviewPro"
+        app:layout_constraintVertical_bias="0.5"
         tools:ignore="ContentDescription,MissingConstraints" />
 
     <TextView
@@ -50,24 +61,26 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:text="@string/enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/continue_taking_your_measurements_without_watching_ads"
         android:textColor="@color/gray"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView18"
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="24dp"
-        android:src="@drawable/noads"
+        android:src="@drawable/premium_icon2"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.5"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -75,23 +88,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="@string/detail"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView22"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/access_saved_light_meter_details"
         android:textColor="@color/gray"
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView23"
-        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -99,13 +114,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="@string/no_ads"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView22"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView21"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -113,45 +126,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="@string/premium_theme"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/textviewPro" />
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
     <TextView
         android:id="@+id/textView21"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci"
         android:textColor="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="24dp"
-        android:src="@drawable/detail"
+        android:src="@drawable/premiumicon3"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.5"
         tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_paywall"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView24">
+        app:layout_constraintTop_toBottomOf="@+id/textView24"
+        app:layout_constraintVertical_bias="0.5">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/montly_paywall_layout"
@@ -186,7 +204,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="@string/montly"
+                    android:text="@string/weekly"
                     android:textColor="@color/color_paywal_text"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -209,7 +227,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@string/per_month"
+                    android:text="@string/per_weekly"
                     android:textColor="@color/color_paywall_monthly_text"
                     app:layout_constraintStart_toStartOf="@+id/monthly_paywall_text"
                     app:layout_constraintTop_toBottomOf="@+id/monthly_paywall_text" />
@@ -285,43 +303,36 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout7"
+
+    <Button
+        android:id="@+id/button_paywall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/buttonradius_home"
+
         android:backgroundTint="@color/orange"
+        android:text="@string/join"
+        android:textColor="@color/white"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintVertical_bias="0.5"
+        tools:ignore="MissingConstraints" />
 
-        <Button
-            android:id="@+id/button_paywall"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/orange"
-            android:text="@string/join"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout8"
         android:layout_width="match_parent"
 
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout7"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout7"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button_paywall"
+        app:layout_constraintStart_toStartOf="@+id/button_paywall"
+        app:layout_constraintTop_toBottomOf="@+id/button_paywall"
+        app:layout_constraintVertical_bias="0.5"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -329,8 +340,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:textColor="@color/color_paywall_monthly_text"
             android:text="@string/privacy_policy"
+            android:textColor="@color/color_paywall_monthly_text"
             app:layout_constraintEnd_toEndOf="parent"
             tools:layout_editor_absoluteY="0dp" />
 
@@ -339,8 +350,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:textColor="@color/color_paywall_monthly_text"
             android:text="@string/restore_purchase"
+            android:textColor="@color/color_paywall_monthly_text"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="0dp" />
 
@@ -356,29 +367,6 @@
             tools:layout_editor_absoluteY="0dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView31"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/color_paywall_monthly_text"
-
-        android:text="@string/subscription_details"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8" />
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/subscriptions_will_automatically_renew_and_your_credit_card_will_be_charged_at_the_end_of_each_period_unless_you_unsubscribe_at_least_24_hours_before_to_manage_your_subscription_access_your_google_play_profile_in_your_phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="@color/color_paywall_monthly_text"
-        app:layout_constraintStart_toStartOf="@+id/textView31"
-        app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

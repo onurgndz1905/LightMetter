@@ -44,7 +44,7 @@ class SettingsFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentSettingsBinding.inflate(layoutInflater, container, false)
         sharedPreferences = requireContext().getSharedPreferences("recording", Context.MODE_PRIVATE)
-        interstitialAdManager = InterstitialAdManager(this)
+        interstitialAdManager = InterstitialAdManager(requireContext())
 
         sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         AutomaticRecording.init(requireContext())
@@ -73,7 +73,7 @@ class SettingsFragment : Fragment() {
         Lightvalue.light_value_calibration = savedCalibration
 
         val savedUnit = sharedPreferences.getFloat("unit_settings", 1f)
-            Unit.unitsettings= savedUnit
+        Unit.unitsettings= savedUnit
 
 
 
@@ -160,7 +160,14 @@ class SettingsFragment : Fragment() {
                         setUnit(1f)
                     }
                     R.id.radiobutton_FC ->{
-                        setUnit(0.0929f)
+                        if (IsPremium.is_premium) {
+                            setUnit(0.0929f)
+                        } else {
+                            radioGroup2.clearCheck()
+                            radioGroup2.check(R.id.radibutton_LUX) // Reset to LUX
+                            Toast.makeText(requireContext(), "Premium feature. Please upgrade to access.", Toast.LENGTH_SHORT).show()
+                            replaceFragment(PaywallFragment())
+                        }
                     }
 
                 }
@@ -183,6 +190,11 @@ class SettingsFragment : Fragment() {
             Addisplay.number_of_ad_impressions++
             showInterstitialAdOnClick()
 
+        }
+        binding.buttonGoPremium.setOnClickListener {
+            replaceFragment(PaywallFragment())
+            Addisplay.number_of_ad_impressions++
+            showInterstitialAdOnClick()
         }
         binding.constraintLayout22RestorePurchase.setOnClickListener {
             if(!IsPremium.is_premium){
@@ -209,7 +221,8 @@ class SettingsFragment : Fragment() {
                         val termsof_use = remoteConfig.getString("term_of_use")
                         val privacyPolicyText = remoteConfig.getString("privacy_policy")
                         val click_count_control = remoteConfig.getString("click_count_control")
-                        val giv_us_point = remoteConfig.getString("giv_us_point")
+                        val giv_us_point = remoteConfig.getString("we_give_points")
+
 
                         val click = sharedPreferences.getInt("click", click_count_control.toInt())
                         ClickController.click_count_control = click
@@ -217,10 +230,10 @@ class SettingsFragment : Fragment() {
 
 
 
-                        binding.privacyPolicy.setOnClickListener{
+                        binding.giveUsPoint.setOnClickListener{
                             if (giv_us_point.isEmpty()) {
                                 // Metin değeri boş ise
-                                openUrlInBrowser("https://docs.google.com/document/d/e/2PACX-1vSDE879PGysWGu1RXoA4JIRYL_uszA5XsJklv4_951MM21J84mp7Tj_cQ16SljdmtuMmkYSzk0ToBH3/pub")
+                                openUrlInBrowser("https://play.google.com/store/apps/details?id=com.lux.light.meter.luminosity")
                             } else {
                                 openUrlInBrowser(giv_us_point)
                             }
@@ -265,7 +278,7 @@ class SettingsFragment : Fragment() {
             startActivity(intent)
         } else {
 
-             Toast.makeText(requireContext(), "URL is empty", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "URL is empty", Toast.LENGTH_SHORT).show()
         }
     }
 

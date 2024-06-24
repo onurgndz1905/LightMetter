@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.lux.light.meter.luminosity.R
 import com.lux.light.meter.luminosity.adapter.ViewPagerAdapter
 import com.lux.light.meter.luminosity.databinding.FragmentViewPagerBinding
+import com.lux.light.meter.luminosity.paywall.PaywallFragment
 
 
 class ViewPagerFragment : Fragment() {
@@ -23,12 +24,13 @@ class ViewPagerFragment : Fragment() {
     val fragmentList = arrayListOf<Fragment>(
         OnboardingoneFragment(),
         OnboardingtwoFragment(),
-        OnboardingfinishFragment()
+        OnboardingfinishFragment(),
+        PaywallFragment()
     )
 
      val adapter = ViewPagerAdapter(
          fragmentList,
-         requireActivity().supportFragmentManager,
+         childFragmentManager,
          lifecycle
      )
         binding.viewpager.adapter = adapter

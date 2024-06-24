@@ -2,7 +2,10 @@ package com.lux.light.meter.luminosity.fragment
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,11 +14,17 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.lux.light.meter.luminosity.R
 import com.lux.light.meter.luminosity.applovin.InterstitialAdManager
 import com.lux.light.meter.luminosity.databinding.FragmentRecommendBinding
+import com.lux.light.meter.luminosity.`object`.IsPremium
 import com.lux.light.meter.luminosity.`object`.RecommendationName
 import com.lux.light.meter.luminosity.`object`.Unit
+import com.lux.light.meter.luminosity.paywall.PaywallFragment
+import com.lux.light.meter.luminosity.viewmodel.PaywallViewModel2
+import eightbitlab.com.blurview.RenderScriptBlur
 
 
 class RecommendFragment : Fragment() {
@@ -23,6 +32,7 @@ class RecommendFragment : Fragment() {
     private lateinit var binding: FragmentRecommendBinding
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var interstitialAdManager: InterstitialAdManager
+    private lateinit var paywallViewModel: PaywallViewModel2
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,15 +41,86 @@ class RecommendFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentRecommendBinding.inflate(inflater, container, false)
         sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE) // shared preferences başlatılıyor
-        interstitialAdManager = InterstitialAdManager(this)
+        interstitialAdManager = InterstitialAdManager(requireContext())
 
         val savedUnit = sharedPreferences.getFloat("unit_settings", 1f)
         Unit.unitsettings= savedUnit
+
+        val textViews = listOf(
+
+            binding.proText,
+            binding.PROtex2,
+            binding.PROtex3,
+            binding.PROtex4,
+            binding.PROtex5,
+            binding.PROtext6,
+            binding.PROtext6,
+            binding.PROtext7,
+            binding.PROtext8,
+            binding.PROtext9,
+            binding.PROtext10,
+            binding.PROtext11
+
+        )
+
+        textViews.forEach { textView ->
+            applyGradientToTextView(textView)
+        }
+        setupBlurView()
+        if (IsPremium.is_premium){
+            binding.blurViewBathroom.visibility = View.GONE
+            binding.blurViewCafetiraiPremiumIcon.visibility = View.GONE
+            binding.blurViewDiningRoompremiumIcon.visibility = View.GONE
+            binding.blurViewKitcheenPremiumIcon.visibility = View.GONE
+            binding.blurViewGymPremiumIcon.visibility = View.GONE
+            binding.blurViewHotelPremiumIcon.visibility = View.GONE
+            binding.blurViewLockerPremiumIcon.visibility = View.GONE
+            binding.blurViewStudyDeskPremiumIcon.visibility = View.GONE
+            binding.blurViewLibrary3PremiumIcon.visibility = View.GONE
+            binding.blurViewlibraryy33DeskPremiumIcon.visibility = View.GONE
+            binding.classroom.visibility = View.GONE
+
+        }
+        else{
+            binding.blurViewBathroom.visibility = View.VISIBLE
+            binding.blurViewCafetiraiPremiumIcon.visibility = View.VISIBLE
+            binding.blurViewDiningRoompremiumIcon.visibility = View.VISIBLE
+            binding.blurViewKitcheenPremiumIcon.visibility = View.VISIBLE
+            binding.blurViewGymPremiumIcon.visibility = View.VISIBLE
+            binding.blurViewHotelPremiumIcon.visibility = View.VISIBLE
+            binding.blurViewLockerPremiumIcon.visibility = View.VISIBLE
+            binding.blurViewStudyDeskPremiumIcon.visibility = View.VISIBLE
+            binding.blurViewLibrary3PremiumIcon.visibility = View.VISIBLE
+            binding.blurViewlibraryy33DeskPremiumIcon.visibility = View.VISIBLE
+            binding.classroom.visibility = View.VISIBLE
+        }
 
         showPopupRecommendation()
 
         click_recommendded()
         showInterstitialAdOnClick()
+
+        paywallViewModel = ViewModelProvider(requireActivity()).get(PaywallViewModel2::class.java)
+        paywallViewModel.booleanLiveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer { newValue ->
+            Log.e("paywalviewmodelll","${newValue}")
+            if (newValue) {
+                // Paywall gösterilsin
+                replaceFragment2(PaywallFragment())
+                binding.paywallScreenRecommend.visibility = View.VISIBLE // LightScreenIn'ı gizle
+                binding.recommendHomeIn.visibility = View.GONE
+
+            }
+            else if(!newValue){
+                binding.paywallScreenRecommend.visibility = View.GONE // LightScreenIn'ı göster
+                binding.recommendHomeIn.visibility = View.VISIBLE
+
+            }
+            else {
+                binding.paywallScreenRecommend.visibility = View.GONE // LightScreenIn'ı göster
+                binding.recommendHomeIn.visibility = View.VISIBLE
+
+            }
+        })
         return binding.root
     }
 
@@ -60,16 +141,40 @@ class RecommendFragment : Fragment() {
     }
     fun setOnClickListenerForLayout(layout: View, recommendationName: String) {
         layout.setOnClickListener {
-            replaceFragment(RecommendedLightFragment())
-            RecommendationName.recommendation_name = recommendationName
-            binding.recommendHomeIn.visibility = View.GONE
+            if (layout == binding.constraintLayoutLivingRoom || layout == binding.studyDeskLayout) {
+                replaceFragment(RecommendedLightFragment())
+                RecommendationName.recommendation_name = recommendationName
+                binding.recommendHomeIn.visibility = View.GONE
+            } else {
+                if (!IsPremium.is_premium) {
+                    replaceFragment2(PaywallFragment())
+                } else {
+                    replaceFragment(RecommendedLightFragment())
+                    RecommendationName.recommendation_name = recommendationName
+                    binding.recommendHomeIn.visibility = View.GONE
+                }
+            }
+            // Close PaywallFragment after handling fragment replacement
+            (parentFragment as? RecommendFragment)?.removeRecommendFragment()
         }
+
     }
+
 
     private fun replaceFragment(fragment: Fragment) {
         childFragmentManager.beginTransaction()
             .replace(R.id.recommend_home, fragment)
             .commit()
+    }
+
+    private fun replaceFragment2(fragment: Fragment) {
+        childFragmentManager.beginTransaction()
+            .replace(R.id.paywall_Screen_recommend, fragment)
+            .commit()
+        binding.recommendHomeIn.visibility = View.GONE
+        binding.paywallScreenRecommend.visibility = View.VISIBLE
+
+
     }
     fun removeRecommendFragment() {
         val fragment = childFragmentManager.findFragmentById(R.id.recommend_home)
@@ -163,8 +268,49 @@ class RecommendFragment : Fragment() {
         interstitialAdManager.showInterstitialAdone() // Tabloyu sıfırla
 
     }
+    private fun setupBlurView() {
+        val radius = 4f
+        binding.blurViewBathroom.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
+            .setBlurRadius(radius)
+        binding.blurViewCafetiraiPremiumIcon.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
+            .setBlurRadius(radius)
+        binding.blurViewGymPremiumIcon.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
+            .setBlurRadius(radius)
+        binding.blurViewDiningRoompremiumIcon.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
+            .setBlurRadius(radius)
+        binding.blurViewLockerPremiumIcon.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
+            .setBlurRadius(radius)
+        binding.blurViewStudyDeskPremiumIcon.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
+            .setBlurRadius(radius)
+        binding.blurViewKitcheenPremiumIcon.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
+            .setBlurRadius(radius)
+        binding.blurViewHotelPremiumIcon.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
+            .setBlurRadius(radius)
+        binding.blurViewBathroom.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
+            .setBlurRadius(radius)
+        binding.blurViewlibraryy33DeskPremiumIcon.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
+            .setBlurRadius(radius)
+        binding.classroom.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
+            .setBlurRadius(radius)
+    }
 
+    private fun applyGradientToTextView(textView: TextView) {
+        val paint = textView.paint
+        val width = paint.measureText(textView.text.toString())
 
+        val shader = LinearGradient(
+            0f, 0f, width, textView.textSize,
+            intArrayOf(
+                ContextCompat.getColor(requireContext(), R.color.startColor),
+                ContextCompat.getColor(requireContext(), R.color.centerColor),
+                ContextCompat.getColor(requireContext(), R.color.endColor)
+            ),
+            null,
+            Shader.TileMode.CLAMP
+        )
+
+        textView.paint.shader = shader
+    }
 
 
 }

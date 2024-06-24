@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">LightMeter</string>
     <!-- TODO: Supprimer ou modifier ce texte de substitution -->
     <string name="hello_blank_fragment">Bonjour fragment vide</string>
@@ -58,7 +58,7 @@
     <string name="light_bad">Vous devez augmenter votre niveau de lumière.</string>
     <string name="lightmeter_pro">Luxmètre Pro</string>
     <string name="premium_theme">Thème Premium</string>
-    <string name="enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci">Enim maecenas in cras cursus. Faucibus urna vitae etiam pellentesque orci.</string>
+    <string name="enim_maecenas_in_cras_cursus_faucibus_urna_vitae_etiam_pellentesque_orci">Voir la valeur de la lumière plus en détail à partir de thèmes spéciaux.</string>
     <string name="no_ads">Pas de publicités</string>
     <string name="detail">Détail</string>
     <string name="access_saved_light_meter_details">Accéder aux détails enregistrés du luxmètre.</string>
@@ -76,4 +76,17 @@
     <string name="min">Min</string>
     <string name="go_premium">Passer à Premium</string>
     <string name="view_other_themes">Voir dautres thèmes.</string>
+    <string name="save_your_light_meter_value_measurement_and_access_the_data_whenever_you_want">Enregistrez la mesure de la valeur de votre photomètre et accédez aux données quand vous le souhaitez.</string>
+    <string name="review_your_records_and_history">Consultez vos enregistrements et votre historique!</string>
+    <string name="skip">Sauter</string>
+    <string name="continue2">Continuer</string>
+    <string name="follow_light_meter_values_instantly">Suivez instantanément les valeurs du photomètre!</string>
+    <string name="intervene_in_your_environment_and_create_a_more_comfortable_environment_with_instant_light_value_information">Intervenez dans votre environnement et créez un environnement plus confortable avec des informations instantanées sur la valeur de la lumière.</string>
+    <string name="customizing_settings_are_under_your_control" tools:ignore="ExtraTranslation">Les paramètres personnalisables sont sous votre contrôle!</string>
+    <string name="weekly">Hebdomadaire</string>
+    <string name="per_weekly">Par semaine</string>
+    <string name="try_or_Free">"Essayez trois jours gratuits"</string>
+    <string name="Contiune">Continuer</string>
+
+    <string name="continue_taking_your_measurements_without_watching_ads">Continuez à prendre vos mesures sans regarder de publicités.</string>
 </resources>

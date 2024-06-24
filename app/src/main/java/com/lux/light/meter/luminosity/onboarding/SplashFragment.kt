@@ -12,10 +12,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.lux.light.meter.luminosity.MainActivity
 import com.lux.light.meter.luminosity.R
 import com.lux.light.meter.luminosity.databinding.FragmentSplashBinding
+import com.lux.light.meter.luminosity.`object`.Unit
+import kotlinx.coroutines.delay
 
 class SplashFragment : Fragment() {
     private lateinit var binding: FragmentSplashBinding
@@ -32,16 +35,7 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Handler().postDelayed({
-            if (onBoardingFinished()) {
-                val intent = Intent(requireActivity(), MainActivity::class.java)
-                startActivity(intent)
-                requireActivity().finish()
-            } else {
-                findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
-            }
-        }, 2000)
-
+        Unit.paywallclick =false
         // Resmin büyüklüğüne göre uygun değerler ayarlayın
         val scaleX = ObjectAnimator.ofFloat(binding.splachimagview, "scaleX", 1.0f, 5.0f)
         val scaleY = ObjectAnimator.ofFloat(binding.splachimagview, "scaleY", 1.0f, 5.0f)
@@ -54,6 +48,18 @@ class SplashFragment : Fragment() {
         animatorSet.playTogether(scaleX, scaleY, alpha, blurAnimator)
         animatorSet.duration = 2000 // Toplam animasyon süresi: 3 saniye
         animatorSet.interpolator = AccelerateInterpolator()
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            delay(2000) // 2 saniye gecikme
+            if (onBoardingFinished()) {
+                val intent = Intent(requireActivity(), MainActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+            } else {
+                findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
+            }
+        }
+
         animatorSet.start()
     }
 

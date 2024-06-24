@@ -27,18 +27,12 @@ class OnboardingfinishFragment : Fragment() {
 
         binding.buttoncontionfinish.setOnClickListener {
 
-            val intent = Intent(requireActivity(),MainActivity::class.java)
-            startActivity(intent)
-            onBoardingFinished()
+            viewpager?.currentItem = 3
+
         }
         return binding.root
     }
 
-    private fun onBoardingFinished(){
-        val sharedPreferences = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putBoolean("Finished",true) // onboarding kontrolü için false çevirdik false olduğunda onboarding her uygulama açıldığında çalışır !!
-        editor.apply()
-    }
+
 
 }
