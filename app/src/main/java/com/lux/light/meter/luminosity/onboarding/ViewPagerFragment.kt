@@ -25,7 +25,6 @@ class ViewPagerFragment : Fragment() {
         OnboardingoneFragment(),
         OnboardingtwoFragment(),
         OnboardingfinishFragment(),
-        PaywallFragment()
     )
 
      val adapter = ViewPagerAdapter(

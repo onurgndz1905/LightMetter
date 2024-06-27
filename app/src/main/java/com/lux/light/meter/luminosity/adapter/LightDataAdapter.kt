@@ -52,8 +52,17 @@ class LightDataAdapter(private val lightDataViewModel: LightDataViewModel, priva
             textViewMax.text = lightData.maxLightValue.toString()
             textViewMin.text = lightData.minLightValue.toString()
             textViewHistory.text = lightData.recordingDate
-            textViewName.text = "Test ${lightData.id}"
+
+            // SharedPreferences'tan id ile ilişkili kaydı alın ve textViewName'e atayın
+            val input = getInputFromSharedPreferences(lightData.id)
+            textViewName.text = input ?: "Test ${lightData.id}"
         }
+
+    }
+
+    private fun getInputFromSharedPreferences(id: Long): String? {
+        val sharedPreferences = context.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE)
+        return sharedPreferences.getString("shared_$id", null)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LightDataViewHolder {

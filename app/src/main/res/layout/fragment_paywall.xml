@@ -176,7 +176,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:background="@drawable/click_paywall_background"
             app:layout_constraintEnd_toStartOf="@+id/yearly_layout_paywall"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -214,7 +213,7 @@
                     android:id="@+id/monthly_paywall_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:text="--.--"
                     android:textColor="@color/color_paywal_text"
 
@@ -226,7 +225,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:text="@string/per_weekly"
                     android:textColor="@color/color_paywall_monthly_text"
                     app:layout_constraintStart_toStartOf="@+id/monthly_paywall_text"
@@ -312,7 +311,6 @@
         android:layout_marginEnd="16dp"
 
         android:backgroundTint="@color/orange"
-        android:text="@string/join"
         android:textColor="@color/white"
         app:cornerRadius="4dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout8"
@@ -336,7 +334,7 @@
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/textView30"
+            android:id="@+id/textView30_privacy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -356,12 +354,12 @@
             tools:layout_editor_absoluteY="0dp" />
 
         <TextView
-            android:id="@+id/textView28"
+            android:id="@+id/textView28_eula"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/eula"
             android:textColor="@color/color_paywall_monthly_text"
-            app:layout_constraintEnd_toStartOf="@+id/textView30"
+            app:layout_constraintEnd_toStartOf="@+id/textView30_privacy"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textView29"
             tools:layout_editor_absoluteY="0dp" />

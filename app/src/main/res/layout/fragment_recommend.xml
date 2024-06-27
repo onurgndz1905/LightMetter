@@ -59,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout_studydesk"
                 android:layout_width="0dp"
@@ -70,9 +71,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints">
-
-
-
 
 
                 <TextView
@@ -98,7 +96,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout_living_room"
@@ -155,34 +152,45 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintHeight_percent="0.5">
+                    app:layout_constraintHeight_percent="0.4">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <ImageView
-                            android:id="@+id/study_desk_premium_icon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/premium_logo"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/PROtex2"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/PROtex2"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="PRO"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/study_desk_premium_icon"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/study_desk_premium_icon"
-                            app:layout_constraintTop_toTopOf="@+id/study_desk_premium_icon" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:id="@+id/study_desk_premium_icon"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/premium_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/PROtex2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="PRO"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/study_desk_premium_icon"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/study_desk_premium_icon"
+                                app:layout_constraintTop_toTopOf="@+id/study_desk_premium_icon" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -271,34 +279,44 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintHeight_percent="0.5">
+                    app:layout_constraintHeight_percent="0.4">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
                         <ImageView
                             android:id="@+id/slibraty_desk_premium_icon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
                             android:layout_gravity="center"
                             android:src="@drawable/premium_logo"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:layout_editor_absoluteX="48dp" />
 
                         <TextView
                             android:id="@+id/pro_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
+                            android:layout_marginStart="4dp"
                             android:text="PRO"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
+                            android:textSize="22sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="@+id/slibraty_desk_premium_icon"
                             app:layout_constraintStart_toEndOf="@+id/slibraty_desk_premium_icon"
                             app:layout_constraintTop_toTopOf="@+id/slibraty_desk_premium_icon" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -347,36 +365,55 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintHeight_percent="0.5">
+                    app:layout_constraintHeight_percent="0.4">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
 
-                        <ImageView
-                            android:id="@+id/library3_premium_iconpremium_icon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/premium_logo"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/PROtex3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:text="PRO"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/library3_premium_iconpremium_icon"
-                            app:layout_constraintStart_toEndOf="@+id/library3_premium_iconpremium_icon"
-                            app:layout_constraintTop_toTopOf="@+id/library3_premium_iconpremium_icon" />
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <ImageView
+                                    android:id="@+id/library3_premium_iconpremium_icon"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/premium_logo"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/PROtex3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
+                                    android:text="PRO"
+                                    android:textSize="22sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintBottom_toBottomOf="@+id/library3_premium_iconpremium_icon"
+                                    app:layout_constraintStart_toEndOf="@+id/library3_premium_iconpremium_icon"
+                                    app:layout_constraintTop_toTopOf="@+id/library3_premium_iconpremium_icon" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </eightbitlab.com.blurview.BlurView>
@@ -424,36 +461,46 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintHeight_percent="0.5">
+                    app:layout_constraintHeight_percent="0.4">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
 
-
-                        <ImageView
-                            android:id="@+id/hotel_premium_iconpremium_icon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/premium_logo"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/PROtex4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="PRO"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/hotel_premium_iconpremium_icon"
-                            app:layout_constraintStart_toEndOf="@+id/hotel_premium_iconpremium_icon"
-                            app:layout_constraintTop_toTopOf="@+id/hotel_premium_iconpremium_icon" />
+                            <ImageView
+                                android:id="@+id/hotel_premium_iconpremium_icon"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/premium_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/PROtex4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="PRO"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/hotel_premium_iconpremium_icon"
+                                app:layout_constraintStart_toEndOf="@+id/hotel_premium_iconpremium_icon"
+                                app:layout_constraintTop_toTopOf="@+id/hotel_premium_iconpremium_icon" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -501,35 +548,45 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintHeight_percent="0.5">
+                    app:layout_constraintHeight_percent="0.4">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <TextView
-                            android:id="@+id/PROtex5"
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="PRO"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/bathroom_iconpremium_icon"
-                            app:layout_constraintStart_toEndOf="@+id/bathroom_iconpremium_icon"
-                            app:layout_constraintTop_toTopOf="@+id/bathroom_iconpremium_icon"
-                            app:layout_constraintVertical_bias="1.0" />
-
-                        <ImageView
-                            android:id="@+id/bathroom_iconpremium_icon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/premium_logo"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/PROtex5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="PRO"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/bathroom_iconpremium_icon"
+                                app:layout_constraintStart_toEndOf="@+id/bathroom_iconpremium_icon"
+                                app:layout_constraintTop_toTopOf="@+id/bathroom_iconpremium_icon"
+                                app:layout_constraintVertical_bias="1.0" />
+
+                            <ImageView
+                                android:id="@+id/bathroom_iconpremium_icon"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/premium_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </eightbitlab.com.blurview.BlurView>
@@ -575,34 +632,44 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintHeight_percent="0.5">
+                    app:layout_constraintHeight_percent="0.4">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <TextView
-                            android:id="@+id/PROtext6"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="PRO"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/kitcheen_premium_iconpremium_icon"
-                            app:layout_constraintStart_toEndOf="@+id/kitcheen_premium_iconpremium_icon"
-                            app:layout_constraintTop_toTopOf="@+id/kitcheen_premium_iconpremium_icon" />
-
-                        <ImageView
-                            android:id="@+id/kitcheen_premium_iconpremium_icon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/premium_logo"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/PROtext6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="PRO"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/kitcheen_premium_iconpremium_icon"
+                                app:layout_constraintStart_toEndOf="@+id/kitcheen_premium_iconpremium_icon"
+                                app:layout_constraintTop_toTopOf="@+id/kitcheen_premium_iconpremium_icon" />
+
+                            <ImageView
+                                android:id="@+id/kitcheen_premium_iconpremium_icon"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/premium_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -649,35 +716,45 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintHeight_percent="0.5">
+                    app:layout_constraintHeight_percent="0.4">
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <TextView
-                            android:id="@+id/PROtext7"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="PRO"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremium_iconpremium_icon"
-                            app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremium_iconpremium_icon"
-                            app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremium_iconpremium_icon" />
-
-                        <ImageView
-                            android:id="@+id/kitcheen_aspremium_iconpremium_icon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/premium_logo"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/PROtext7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="PRO"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremium_iconpremium_icon"
+                                app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremium_iconpremium_icon"
+                                app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremium_iconpremium_icon" />
+
+                            <ImageView
+                                android:id="@+id/kitcheen_aspremium_iconpremium_icon"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/premium_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </eightbitlab.com.blurview.BlurView>
                 <ImageButton
@@ -721,34 +798,44 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintHeight_percent="0.5">
+                    app:layout_constraintHeight_percent="0.4">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <TextView
-                            android:id="@+id/PROtext8"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="PRO"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremium_iconpremium_icon32"
-                            app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremium_iconpremium_icon32"
-                            app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremium_iconpremium_icon32" />
-
-                        <ImageView
-                            android:id="@+id/kitcheen_aspremium_iconpremium_icon32"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/premium_logo"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/PROtext8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="PRO"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremium_iconpremium_icon32"
+                                app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremium_iconpremium_icon32"
+                                app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremium_iconpremium_icon32" />
+
+                            <ImageView
+                                android:id="@+id/kitcheen_aspremium_iconpremium_icon32"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/premium_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </eightbitlab.com.blurview.BlurView>
                 <ImageButton
@@ -793,35 +880,44 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintHeight_percent="0.5">
+                    app:layout_constraintHeight_percent="0.4">
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <TextView
-                            android:id="@+id/PROtext9"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="PRO"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremium_iconpremiumasd_icon32"
-                            app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremium_iconpremiumasd_icon32"
-                            app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremium_iconpremiumasd_icon32" />
-
-                        <ImageView
-                            android:id="@+id/kitcheen_aspremium_iconpremiumasd_icon32"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/premium_logo"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/PROtext9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="PRO"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremium_iconpremiumasd_icon32"
+                                app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremium_iconpremiumasd_icon32"
+                                app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremium_iconpremiumasd_icon32" />
+
+                            <ImageView
+                                android:id="@+id/kitcheen_aspremium_iconpremiumasd_icon32"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/premium_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </eightbitlab.com.blurview.BlurView>
                 <ImageButton
@@ -866,34 +962,44 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintHeight_percent="0.5">
+                    app:layout_constraintHeight_percent="0.4">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <TextView
-                            android:id="@+id/PROtext10"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="PRO"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremdsium_iconpremiumasd_icon32"
-                            app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremdsium_iconpremiumasd_icon32"
-                            app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremdsium_iconpremiumasd_icon32" />
-
-                        <ImageView
-                            android:id="@+id/kitcheen_aspremdsium_iconpremiumasd_icon32"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/premium_logo"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/PROtext10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="PRO"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremdsium_iconpremiumasd_icon32"
+                                app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremdsium_iconpremiumasd_icon32"
+                                app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremdsium_iconpremiumasd_icon32" />
+
+                            <ImageView
+                                android:id="@+id/kitcheen_aspremdsium_iconpremiumasd_icon32"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/premium_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:layout_editor_absoluteX="48dp" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </eightbitlab.com.blurview.BlurView>
 
@@ -939,34 +1045,43 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintHeight_percent="0.5">
+                    app:layout_constraintHeight_percent="0.4">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <TextView
-                            android:id="@+id/PROtext11"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="PRO"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremdsium_iconpremiumassdd_icon32"
-                            app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremdsium_iconpremiumassdd_icon32"
-                            app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremdsium_iconpremiumassdd_icon32" />
-
-                        <ImageView
-                            android:id="@+id/kitcheen_aspremdsium_iconpremiumassdd_icon32"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/premium_logo"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/PROtext11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="PRO"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/kitcheen_aspremdsium_iconpremiumassdd_icon32"
+                                app:layout_constraintStart_toEndOf="@+id/kitcheen_aspremdsium_iconpremiumassdd_icon32"
+                                app:layout_constraintTop_toTopOf="@+id/kitcheen_aspremdsium_iconpremiumassdd_icon32" />
+
+                            <ImageView
+                                android:id="@+id/kitcheen_aspremdsium_iconpremiumassdd_icon32"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/premium_logo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </eightbitlab.com.blurview.BlurView>
                 <ImageButton

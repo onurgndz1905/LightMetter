@@ -46,7 +46,7 @@
     <string name="automatic_recording">Otomatik Kayıt</string>
     <string name="maximum_value">Maksimum Değer</string>
     <string name="calibration">Kalibrasyon</string>
-    <string name="restore_purchase">Satın Alma İadesi</string>
+    <string name="restore_purchase">Satın alma işlemini geri yükle</string>
     <string name="give_us_a_point">Bize Puan Verin</string>
     <string name="terms_of_use">Kullanım Koşulları</string>
     <string name="privacy_policy">Gizlilik Politikası</string>
@@ -81,8 +81,23 @@
     <string name="intervene_in_your_environment_and_create_a_more_comfortable_environment_with_instant_light_value_information">Ortamınıza müdahale edin ve anlık ışık değeri bilgileriyle daha konforlu bir ortam yaratın.</string>
     <string name="weekly">Haftalık</string>
     <string name="per_weekly">Haftalık Başına</string>
-    <string name="try_or_Free">"Üç Gün Ücretsiz Deneyin"</string>
-    <string name="Contiune">Devam et</string>
+    <string name="try_or_Free">"3 günlük ücretsiz denemenizi başlatın"</string>
     <string name="customizable_settings_are_under_your_control">Özelleştirilebilir Ayarlar Sizin Kontrolünüzde!</string>
     <string name="continue_taking_your_measurements_without_watching_ads">Reklam izlemeden ölçümlerinizi yapmaya devam edin.</string>
+    <string name="control_the_light_measurement_values_as_you_wish_and_protect_your_eye_health">Işık ölçüm değerlerini dilediğiniz gibi kontrol edin ve göz sağlığınızı koruyun.</string>
+    <string name="enjoy_ad_free">Reklamsız Keyfini Çıkarın</string>
+    <string name="experience">Deneyim</string>
+    <string name="experience_the_application_completely_free_for_3_days">Uygulamayı 3 gün boyunca tamamen ücretsiz olarak deneyimleyin.</string>
+    <string name="give_your_recording_a_name">Kaydınıza bir ad verin</string>
+    <string name="cancel2">İptal</string>
+    <string name="save">Kaydet</string>
+    <string name="test_name">Test Adı</string>
+    <string name="this_feature_is_premium_you_can_watch_rewarded_ads_or_consider_upgrade_options">Bu özellik premiumdur, ödüllü reklamları izleyebilir veya yükseltme seçeneklerini değerlendirebilirsiniz.</string>
+    <string name="upgrade">Yükselt</string>
+    <string name="watch_ad">Reklamı İzle</string>
+    <string name="the_Ad_failed">Reklam yüklenemedi, lütfen tekrar deneyin.</string>
+    <string name="your_record_will_be_deleted_are_you_sure">Kaydınızın silineceğinden emin misiniz?</string>
+    <string name="this_feature_is_premium_you_can_watch_ads_or_use_upgrade_options">Bu özellik premiumdur. Reklamları izleyebilir veya yükseltme seçeneklerini kullanabilirsiniz.</string>
+    <string name="you_are_using_premium">PREMIUM KULLANIYORSUNUZ</string>
+    <string name="data">Veri</string>
 </resources>

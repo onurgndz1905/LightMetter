@@ -6,4 +6,6 @@ object Unit {
     var paywallclick =  false
      var isMeasurementRunning = true
 
+    var homeactiffe = false
+
 }

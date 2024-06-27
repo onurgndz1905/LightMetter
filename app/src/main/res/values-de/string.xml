@@ -85,6 +85,21 @@
     <string name="continue_taking_your_measurements_without_watching_ads">Nehmen Sie weiterhin Messungen vor, ohne Werbung anzusehen.</string>
     <string name="weekly">Wöchentlich</string>
     <string name="per_weekly">Pro Woche</string>
-    <string name="try_or_Free">"Drei Tage kostenlos testen"</string>
-    <string name="Continue" tools:ignore="ExtraTranslation">Weiter</string>
+    <string name="try_or_Free">"Starten Sie Ihre 3-tägige kostenlose Testversion"</string>
+    <string name="control_the_light_measurement_values_as_you_wish_and_protect_your_eye_health">Kontrollieren Sie die Lichtmesswerte nach Wunsch und schützen Sie Ihre Augengesundheit.</string>
+    <string name="enjoy_ad_free">Werbefrei genießen</string>
+    <string name="experience_the_application_completely_free_for_3_days">Erleben Sie die Anwendung 3 Tage lang völlig kostenlos.</string>
+    <string name="give_your_recording_a_name">Geben Sie Ihrer Aufnahme einen Namen</string>
+    <string name="cancel2">Abbrechen</string>
+    <string name="save">Speichern</string>
+    <string name="test_name">Testname</string>
+    <string name="this_feature_is_premium_you_can_watch_rewarded_ads_or_consider_upgrade_options">Diese Funktion ist Premium, Sie können belohnte Anzeigen ansehen oder Upgrade-Optionen in Betracht ziehen.</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="watch_ad">Anzeige ansehen</string>
+    <string name="the_Ad_failed">Die Anzeige konnte nicht geladen werden. Bitte versuchen Sie es erneut. nochmal.</string>
+    <string name="your_record_will_be_deleted_are_you_sure">Ihr Datensatz wird gelöscht, sind Sie sicher?</string>
+    <string name="this_feature_is_premium_you_can_watch_ads_or_use_upgrade_options">Diese Funktion ist Premium. Sie können Werbung ansehen oder Upgrade-Optionen verwenden.</string>
+    <string name="you_are_using_premium">SIE VERWENDEN PREMIUM</string>
+    <string name="data">Daten</string>
+    <string name="experience">Erfahrung</string>
 </resources>

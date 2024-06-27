@@ -22,6 +22,15 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0.60dp"
+        android:background="@color/defaultbutton"
+        app:layout_constraintBottom_toBottomOf="@+id/frame_layout"
+        tools:ignore="MissingConstraints" />
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -31,8 +40,8 @@
         app:itemTextColor="@drawable/bottom_nav_text_color"
         app:itemIconTint="@drawable/bottom_nav_text_color"
         app:itemBackground="@color/black"
-
         android:foregroundGravity="bottom"
+
         android:layout_gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

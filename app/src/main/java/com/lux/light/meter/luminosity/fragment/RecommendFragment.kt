@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.lux.light.meter.luminosity.R
 import com.lux.light.meter.luminosity.applovin.InterstitialAdManager
 import com.lux.light.meter.luminosity.databinding.FragmentRecommendBinding
+import com.lux.light.meter.luminosity.`object`.Addisplay
 import com.lux.light.meter.luminosity.`object`.IsPremium
 import com.lux.light.meter.luminosity.`object`.RecommendationName
 import com.lux.light.meter.luminosity.`object`.Unit
@@ -141,7 +142,7 @@ class RecommendFragment : Fragment() {
     }
     fun setOnClickListenerForLayout(layout: View, recommendationName: String) {
         layout.setOnClickListener {
-            if (layout == binding.constraintLayoutLivingRoom || layout == binding.studyDeskLayout) {
+            if (layout == binding.constraintLayoutLivingRoom || layout == binding.constraintLayoutStudydesk) {
                 replaceFragment(RecommendedLightFragment())
                 RecommendationName.recommendation_name = recommendationName
                 binding.recommendHomeIn.visibility = View.GONE
@@ -264,8 +265,10 @@ class RecommendFragment : Fragment() {
     }
 
     private fun showInterstitialAdOnClick() {
-        interstitialAdManager.loadInterstitialAd()
-        interstitialAdManager.showInterstitialAdone() // Tabloyu sıfırla
+        if (Addisplay.number_of_ad_impressions%3 ==1){
+            interstitialAdManager.loadInterstitialAd()
+        }
+        interstitialAdManager.showInterstitialAd() // Tabloyu sıfırla
 
     }
     private fun setupBlurView() {
@@ -289,6 +292,8 @@ class RecommendFragment : Fragment() {
         binding.blurViewBathroom.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
             .setBlurRadius(radius)
         binding.blurViewlibraryy33DeskPremiumIcon.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
+            .setBlurRadius(radius)
+        binding.blurViewLibrary3PremiumIcon.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
             .setBlurRadius(radius)
         binding.classroom.setupWith(requireActivity().window.decorView.findViewById(android.R.id.content), RenderScriptBlur(requireContext()))
             .setBlurRadius(radius)

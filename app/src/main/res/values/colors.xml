@@ -27,9 +27,9 @@
     <color name="background_paywall_button">#151515</color>
 
 
-        <color name="startColor">#FFA500</color> <!-- Turuncu -->
-        <color name="centerColor">#FF4500</color> <!-- Koyu Turuncu -->
-        <color name="endColor">#000000</color> <!-- Açık Turuncu -->
+        <color name="startColor">#FFFFFF</color> <!-- Turuncu -->
+        <color name="centerColor">#FFFFFF</color> <!-- Koyu Turuncu -->
+        <color name="endColor">#FFFFFF</color> <!-- Açık Turuncu -->
 
 
 </resources>

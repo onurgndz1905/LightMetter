@@ -1,35 +1,16 @@
 package com.lux.light.meter.luminosity
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.Color
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
-import android.opengl.Visibility
-import android.os.Build
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.util.Log
-import android.view.View
-import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.android.billingclient.api.BillingClient
-import com.android.billingclient.api.BillingResult
-import com.android.billingclient.api.Purchase
-import com.android.billingclient.api.PurchasesUpdatedListener
+import androidx.lifecycle.ViewModelProvider
 import com.applovin.mediation.MaxAd
-import com.applovin.sdk.AppLovinSdk
-import com.applovin.sdk.AppLovinSdkConfiguration
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.analytics.logEvent
@@ -40,31 +21,29 @@ import com.lux.light.meter.luminosity.fragment.LightmeterFragment
 import com.lux.light.meter.luminosity.fragment.RecommendFragment
 import com.lux.light.meter.luminosity.fragment.SettingsFragment
 import com.lux.light.meter.luminosity.`object`.IsPremium
-import com.revenuecat.purchases.CustomerInfo
 import com.revenuecat.purchases.LogLevel
 import com.revenuecat.purchases.Package
-import com.revenuecat.purchases.PurchaseParams
 import com.revenuecat.purchases.Purchases
 import com.revenuecat.purchases.PurchasesConfiguration
 import com.applovin.mediation.MaxAdRevenueListener
-import com.applovin.mediation.MaxAdViewAdListener
-import com.applovin.mediation.MaxError
 import com.applovin.mediation.ads.MaxAdView
 import com.lux.light.meter.luminosity.applovin.InterstitialAdManager
 import com.lux.light.meter.luminosity.`object`.Addisplay
 import com.lux.light.meter.luminosity.`object`.Advert
+import com.lux.light.meter.luminosity.`object`.Unit
+import com.lux.light.meter.luminosity.viewmodel.PaywallViewModel
+import com.lux.light.meter.luminosity.viewmodel.PaywallViewModel2
 import com.revenuecat.purchases.getCustomerInfoWith
 
 class MainActivity : AppCompatActivity(),MaxAdRevenueListener {
     private lateinit var binding: ActivityMainBinding
-    var selected_pacaked: Package? = null
     private lateinit var firebaseAnalytics: FirebaseAnalytics
     private lateinit var lightTextView: TextView
-    val itemId = "unique_item_id"
-    val itemName = "Motivation"
+
     private var adView: MaxAdView? = null
     private lateinit var interstitialAdManager: InterstitialAdManager
-
+    private lateinit var paywallViewModel: PaywallViewModel
+    private lateinit var paywallviemodel2: PaywallViewModel2
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,11 +62,10 @@ class MainActivity : AppCompatActivity(),MaxAdRevenueListener {
             ).build()
         )
         firebaseAnalytics = Firebase.analytics
-        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
-            param(FirebaseAnalytics.Param.ITEM_ID, itemId)
-            param(FirebaseAnalytics.Param.ITEM_NAME, itemName)
-            param(FirebaseAnalytics.Param.CONTENT_TYPE, "image")
-        }
+
+        paywallViewModel = ViewModelProvider(this).get(PaywallViewModel::class.java)
+        paywallviemodel2 = ViewModelProvider(this).get(PaywallViewModel2::class.java)
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             // Tüm menü öğelerinin rengini varsayılan rengine geri döndürün
@@ -109,8 +87,7 @@ class MainActivity : AppCompatActivity(),MaxAdRevenueListener {
             )
             menuItem.title = spannable
 
-            Addisplay.number_of_ad_impressions++
-            showInterstitialAdOnClick()
+
 
             true
         }
@@ -121,10 +98,37 @@ class MainActivity : AppCompatActivity(),MaxAdRevenueListener {
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.Lightmeter -> replaceFragment(LightmeterFragment())
-                R.id.history -> replaceFragment(HistoryFragment())
-                R.id.recommend -> replaceFragment(RecommendFragment())
-                R.id.settings -> replaceFragment(SettingsFragment())
+                R.id.Lightmeter ->
+                {
+                    replaceFragment(LightmeterFragment())
+                    Unit.homeactiffe = true
+                    Addisplay.number_of_ad_impressions++
+                    showInterstitialAdOnClick()
+                }
+                R.id.history ->
+                {
+                    replaceFragment(HistoryFragment())
+                    Addisplay.number_of_ad_impressions++
+                    showInterstitialAdOnClick()
+                    Unit.homeactiffe = false
+
+                }
+                R.id.recommend ->
+                {
+                    replaceFragment(RecommendFragment())
+                    Addisplay.number_of_ad_impressions++
+                    showInterstitialAdOnClick()
+                    Unit.homeactiffe = false
+
+                }
+                R.id.settings ->
+                {
+                    replaceFragment(SettingsFragment())
+                    Addisplay.number_of_ad_impressions++
+                    showInterstitialAdOnClick()
+                    Unit.homeactiffe = false
+
+                }
                 else -> {
 
                 }
@@ -134,6 +138,11 @@ class MainActivity : AppCompatActivity(),MaxAdRevenueListener {
         }
        checkPremium()
 
+        if (!IsPremium.is_premium){
+            paywallViewModel.setBooleanValue(true)
+
+        }
+
         Log.e("premium",IsPremium.is_premium.toString())
 
 
@@ -142,35 +151,44 @@ class MainActivity : AppCompatActivity(),MaxAdRevenueListener {
 
 
     private fun replaceFragment(fragment: Fragment) {
-        val fargmentManager = supportFragmentManager
-        val fragmentTransaction = fargmentManager.beginTransaction()
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
     }
+
     private fun showInterstitialAdOnClick() {
-        interstitialAdManager.loadInterstitialAd()
-        interstitialAdManager.showInterstitialAd()
 
-    }
+        if (Addisplay.number_of_ad_impressions%3 ==1){
+            interstitialAdManager.loadInterstitialAd()
 
-
-    override fun onAdRevenuePaid(p0: MaxAd) {
-        // The onImpressionSuccess will be reported when the rewarded video and interstitial ad is
-        // opened.
-        // For banners, the impression is reported on load success. Log.d(TAG, "onImpressionSuccess" +
-        // impressionData)
-        firebaseAnalytics = Firebase.analytics
-        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.AD_IMPRESSION) {
-            param(FirebaseAnalytics.Param.AD_PLATFORM, "Max")
-            param(FirebaseAnalytics.Param.AD_SOURCE, p0.networkName)
-            param(FirebaseAnalytics.Param.AD_FORMAT, p0.format.label)
-            param(FirebaseAnalytics.Param.AD_UNIT_NAME, p0.adUnitId)
-            param(FirebaseAnalytics.Param.CURRENCY, "USD")
-            param(FirebaseAnalytics.Param.VALUE, p0.revenue)
         }
 
+        interstitialAdManager.showInterstitialAd() // Tabloyu sıfırla
+
 
     }
+
+
+
+    override fun onAdRevenuePaid(impressionData: MaxAd) {
+        Log.d("FirebaseAnalytics", "onAdRevenuePaid Called")
+        impressionData.let {
+            firebaseAnalytics.logEvent(FirebaseAnalytics.Event.AD_IMPRESSION) {
+                param(FirebaseAnalytics.Param.AD_PLATFORM, "appLovin")
+                param(FirebaseAnalytics.Param.AD_UNIT_NAME, impressionData.adUnitId)
+                param(FirebaseAnalytics.Param.AD_FORMAT, impressionData.format.label)
+                param(FirebaseAnalytics.Param.AD_SOURCE, impressionData.networkName)
+                param(FirebaseAnalytics.Param.VALUE, impressionData.revenue)
+                param(FirebaseAnalytics.Param.CURRENCY, "USD")
+            }
+        }
+    }
+
+
+
+
+
     fun checkPremium(){
         Purchases.sharedInstance.getCustomerInfoWith { customerInfo ->
             haveSubscription(customerInfo.activeSubscriptions.isNotEmpty())
@@ -179,6 +197,19 @@ class MainActivity : AppCompatActivity(),MaxAdRevenueListener {
     fun haveSubscription(status:Boolean){
      IsPremium.is_premium = status
 
+    }
+
+    override fun onBackPressed() {
+
+        if (paywallViewModel.booleanLiveData.value == true || paywallviemodel2.booleanLiveData.value == true || !Unit.homeactiffe) {
+            paywallViewModel.setBooleanValue(false)
+            paywallviemodel2.setBooleanValue(false)
+            binding.bottomNavigationView.selectedItemId = R.id.Lightmeter
+        }
+        else{
+            super.onBackPressed()
+
+        }
     }
 
 

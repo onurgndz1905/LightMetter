@@ -10,5 +10,15 @@
         <item name="android:buttonTint">@color/orange</item>
     </style>
 
+    <style name="CustomDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
     <style name="Theme.LuxLightMetter" parent="Base.Theme.LuxLightMetter" />
+    <style name="RadioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorSecondary">@color/orange</item>
+        <item name="buttonTint">@color/radio_button_color</item>
+        <item name="color">@color/orange</item>
+    </style>
 </resources>

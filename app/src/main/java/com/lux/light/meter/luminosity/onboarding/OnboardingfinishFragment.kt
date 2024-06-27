@@ -27,12 +27,27 @@ class OnboardingfinishFragment : Fragment() {
 
         binding.buttoncontionfinish.setOnClickListener {
 
-            viewpager?.currentItem = 3
-
+            if (!isOnBoardingFinished()) {
+                val intent = Intent(requireActivity(), MainActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+                onBoardingFinished()
+            }
         }
         return binding.root
     }
 
+    private fun onBoardingFinished() {
+        val sharedPreferences = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("Finished", true) // onboarding kontrolü için false çevirdik false olduğunda onboarding her uygulama açıldığında çalışır !!
+        editor.apply()
+    }
+
+    private fun isOnBoardingFinished(): Boolean {
+        val sharedPreferences = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
+        return sharedPreferences.getBoolean("Finished", false)
+    }
 
 
 }

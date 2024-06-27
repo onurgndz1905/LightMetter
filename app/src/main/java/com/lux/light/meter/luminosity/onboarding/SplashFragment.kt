@@ -35,18 +35,16 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Unit.paywallclick =false
+        Unit.paywallclick = false
+
         // Resmin büyüklüğüne göre uygun değerler ayarlayın
-        val scaleX = ObjectAnimator.ofFloat(binding.splachimagview, "scaleX", 1.0f, 5.0f)
-        val scaleY = ObjectAnimator.ofFloat(binding.splachimagview, "scaleY", 1.0f, 5.0f)
+        val scaleX = ObjectAnimator.ofFloat(binding.splachimagview, "scaleX", 1.0f, 2.0f) // Daha küçük ölçekleme
+        val scaleY = ObjectAnimator.ofFloat(binding.splachimagview, "scaleY", 1.0f, 2.0f) // Daha küçük ölçekleme
         val alpha = ObjectAnimator.ofFloat(binding.splachimagview, "alpha", 1.0f, 0.5f)
 
-        // Blur efekti için yeni bir ObjectAnimator ekleyin
-        val blurAnimator = ObjectAnimator.ofFloat(binding.splachimagview, "blur", 0f, 25f)
-
         val animatorSet = AnimatorSet()
-        animatorSet.playTogether(scaleX, scaleY, alpha, blurAnimator)
-        animatorSet.duration = 2000 // Toplam animasyon süresi: 3 saniye
+        animatorSet.playTogether(scaleX, scaleY, alpha)
+        animatorSet.duration = 2000 // Toplam animasyon süresi: 2 saniye
         animatorSet.interpolator = AccelerateInterpolator()
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {

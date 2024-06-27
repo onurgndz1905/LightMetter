@@ -17,38 +17,31 @@ import java.util.concurrent.Executors
 class MyApp : Application() {
     private lateinit var appOpenManager: ExampleAppOpenManager
     private lateinit var sharedPreferences: SharedPreferences
-    var selected_pacaked : Package? = null
+    var selected_package: Package? = null
 
     override fun onCreate() {
         super.onCreate()
-        appOpenManager = ExampleAppOpenManager(this)
         FirebaseApp.initializeApp(this)
         sharedPreferences = applicationContext.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
+        // SDK'yi başlat
+        AppLovinSdk.getInstance(this).initializeSdk { configuration: AppLovinSdkConfiguration ->
+            appOpenManager = ExampleAppOpenManager(applicationContext)
+        }
+
         // Uygulama başladığında veya yeniden başladığında çağrılacak metot
         resetCurrentIndex()
-        AppLovinSdk.getInstance(this).initializeSdk({configuration :AppLovinSdkConfiguration ->
-            appOpenManager = ExampleAppOpenManager(applicationContext)
-        })
 
         val remoteConfig = FirebaseRemoteConfig.getInstance()
         remoteConfig.fetchAndActivate()
             .addOnCompleteListener(Executors.newSingleThreadExecutor(), OnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val updated = task.result
-                        val click_count_control = remoteConfig.getString("click_count_control")
-
-                        val click = sharedPreferences.getInt("click", click_count_control.toInt())
-                        ClickController.click_count_control = click
-
-
-                } else {
+                    val click_count_control = remoteConfig.getString("click_count_control")
+                    val click = sharedPreferences.getInt("click", click_count_control.toInt())
+                    ClickController.click_count_control = click
                 }
             })
-
-
-
-
     }
 
     private fun resetCurrentIndex() {
@@ -57,7 +50,4 @@ class MyApp : Application() {
         editor.putInt(CurrentIndex.KEY_CURRENT_INDEX, 0) // Değeri 0 olarak ayarla
         editor.apply()
     }
-
-
-
 }

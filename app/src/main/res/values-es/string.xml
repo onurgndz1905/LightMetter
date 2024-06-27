@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Medidor de luz</string>
     <!-- TODO: Eliminar o cambiar este texto de marcador de posición -->
     <string name="hello_blank_fragment">Hola fragmento en blanco</string>
@@ -85,6 +85,21 @@
     <string name="continue_taking_your_measurements_without_watching_ads">Continúe tomando sus medidas sin ver anuncios.</string>
     <string name="weekly">Hebdomadaire</string>
     <string name="per_weekly">Par semaine</string>
-    <string name="try_or_Free">"Essayez trois jours gratuits"</string>
-    <string name="Contiune">Continuer</string>
+    <string name="try_or_Free">"Comienza tu prueba gratuita de 3 días"</string>
+    <string name="control_the_light_measurement_values_as_you_wish_and_protect_your_eye_health">Controla los valores de medición de la luz como desees y protege tu salud ocular.</string>
+    <string name="enjoy_ad_free">Disfruta sin publicidad</string>
+    <string name="experiencia" tools:ignore="ExtraTranslation">Experiencia</string>
+    <string name="experience_the_application_completely_free_for_3_days">Experimente la aplicación completamente gratis durante 3 días.</string>
+    <string name="give_your_recording_a_name">Dale un nombre a tu grabación</string>
+    <string name="cancel2">Cancelar</string>
+    <string name="save">Guardar</string>
+    <string name="test_name">Nombre de la prueba</string>
+    <string name="this_feature_is_premium_you_can_watch_rewarded_ads_or_consider_upgrade_options">Esta función es premium, puedes ver anuncios recompensados ​​o considerar opciones de actualización.</string>
+    <string name="upgrade">Actualizar</string>
+    <string name="watch_ad">Ver anuncio</string>
+    <string name="the_Ad_failed">El anuncio no se pudo cargar, inténtelo de nuevo.</string>
+    <string name="your_record_will_be_deleted_are_you_sure">Su registro será eliminado, ¿está seguro?</string>
+    <string name="this_feature_is_premium_you_can_watch_ads_or_use_upgrade_options">Esta característica es premium. Puede ver anuncios o utilizar opciones de actualización.</string>
+    <string name="you_are_using_premium">ESTÁS USANDO PREMIUM</string>
+    <string name="data">Datos</string>
 </resources>

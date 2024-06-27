@@ -3,9 +3,9 @@
     <item android:title="@string/lightmeter"
         android:id="@+id/Lightmeter"
         android:icon="@drawable/lightmeter"/>
-    <item android:title="@string/history_"
+    <item android:title="@string/data"
         android:id="@+id/history"
-        android:icon="@drawable/history_icon"/>
+        android:icon="@drawable/data"/>
     <item android:title="@string/recommend"
         android:id="@+id/recommend"
         android:icon="@drawable/recomendsvg"/>

@@ -13,24 +13,28 @@ import com.applovin.sdk.AppLovinSdk
 import com.lux.light.meter.luminosity.`object`.IsPremium
 
 class ExampleAppOpenManager(private val context: Context) : LifecycleObserver, MaxAdListener {
-    private val appOpenAd: MaxAppOpenAd
+    private var appOpenAd: MaxAppOpenAd? = null
     private val ADS_UNIT = "9588c349a9370487"
 
     init {
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
+        initializeAd()
+    }
 
+    private fun initializeAd() {
         appOpenAd = MaxAppOpenAd(ADS_UNIT, context)
-        appOpenAd.setListener(this)
-        appOpenAd.loadAd()
+        appOpenAd?.setListener(this)
+        appOpenAd?.loadAd()
     }
 
     private fun showAdIfReady() {
-        if (appOpenAd == null || !AppLovinSdk.getInstance(context).isInitialized() && IsPremium.is_premium== false) return
+        if (appOpenAd == null || !AppLovinSdk.getInstance(context).isInitialized || IsPremium.is_premium) return
 
-        if (appOpenAd.isReady() && IsPremium.is_premium== false) {
-            appOpenAd.showAd(ADS_UNIT)
+        if (appOpenAd?.isReady == true) {
+            appOpenAd?.showAd(ADS_UNIT)
         } else {
-            appOpenAd.loadAd()
+            // Reklam hazır değilse veya başka bir nedenle gösterilemiyorsa tekrar yükle
+            appOpenAd?.loadAd()
         }
     }
 
@@ -39,19 +43,30 @@ class ExampleAppOpenManager(private val context: Context) : LifecycleObserver, M
         showAdIfReady()
     }
 
-    override fun onAdLoaded(ad: MaxAd) {}
+    override fun onAdLoaded(ad: MaxAd) {
+        // Reklam yüklendiğinde yapılacak işlemler
+    }
 
-    override fun onAdLoadFailed(adUnitId: String, error: MaxError) {}
+    override fun onAdLoadFailed(adUnitId: String, error: MaxError) {
+        // Reklam yüklenemediğinde yapılacak işlemler, hata durumunu yönetin
+        appOpenAd?.loadAd()
+    }
 
-    override fun onAdDisplayed(ad: MaxAd) {}
+    override fun onAdDisplayed(ad: MaxAd) {
+        // Reklam gösterildiğinde yapılacak işlemler
+    }
 
-    override fun onAdClicked(ad: MaxAd) {}
+    override fun onAdClicked(ad: MaxAd) {
+        // Reklama tıklandığında yapılacak işlemler
+    }
 
     override fun onAdHidden(ad: MaxAd) {
-        appOpenAd.loadAd()
+        // Reklam gizlendiğinde yapılacak işlemler, reklamı tekrar yükle
+        appOpenAd?.loadAd()
     }
 
     override fun onAdDisplayFailed(ad: MaxAd, error: MaxError) {
-        appOpenAd.loadAd()
+        // Reklam gösterilemediğinde yapılacak işlemler, hata durumunu yönetin
+        appOpenAd?.loadAd()
     }
 }

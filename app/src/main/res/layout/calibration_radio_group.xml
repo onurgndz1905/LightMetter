@@ -2,80 +2,115 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:background="@color/black">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
 
-    <ImageButton
-        android:id="@+id/close_popup_radio"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="8dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/close_icon"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
-        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checkedButton="@id/radibutton1x"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/bg_input"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RadioButton
-            android:id="@+id/radibutton1x"
+
+        <TextView
+            android:id="@+id/textView48"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="40dp"
-            android:text="1x"
-            android:textColor="@drawable/radibutton_text_color"
-            tools:ignore="RtlSymmetry" />
+            android:layout_marginTop="16dp"
+            android:text="@string/calibration"
+            android:textColor="@color/orange"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/close_popup_radio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/close_popup_radio" />
+
+        <ImageButton
+            android:id="@+id/close_popup_radio"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#17161B"
+            android:scaleType="fitCenter"
+            android:src="@drawable/close_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-        <RadioButton
-            android:id="@+id/radiobutton_1.25x"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="40dp"
-            android:text="1.25x"
-            android:textColor="@drawable/radibutton_text_color"
-            tools:ignore="RtlSymmetry" />
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="122dp"
+            android:layout_height="255dp"
+            android:layout_marginTop="4dp"
+            android:checkedButton="@id/radibutton1x"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView48"
+            tools:ignore="MissingConstraints">
 
-        <RadioButton
-            android:id="@+id/radiobutton_1.5x"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="40dp"
-            android:text="1.50x"
-            android:textColor="@drawable/radibutton_text_color"
-            tools:ignore="RtlSymmetry" />
+            <RadioButton
+                android:id="@+id/radibutton1x"
+                style="@style/RadioButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="40dp"
 
-        <RadioButton
-            android:id="@+id/radiobutton1.75x"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="40dp"
-            android:text="1.75x"
-            android:textColor="@drawable/radibutton_text_color"
-            tools:ignore="RtlSymmetry" />
+                android:text="1x"
+                android:textColor="@drawable/radibutton_text_color"
+                tools:ignore="RtlSymmetry" />
 
-        <RadioButton
-            android:id="@+id/radiobutton2x"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="40dp"
-            android:text="2x"
-            android:textColor="@drawable/radibutton_text_color"
-            tools:ignore="RtlSymmetry" />
-    </RadioGroup>
+
+            <RadioButton
+                android:id="@+id/radiobutton_1.25x"
+                style="@style/RadioButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="40dp"
+                android:text="1.25x"
+                android:textColor="@drawable/radibutton_text_color"
+                tools:ignore="RtlSymmetry" />
+
+            <RadioButton
+                android:id="@+id/radiobutton_1.5x"
+                style="@style/RadioButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="40dp"
+                android:text="1.50x"
+
+                android:textColor="@drawable/radibutton_text_color"
+                tools:ignore="RtlSymmetry" />
+
+            <RadioButton
+                android:id="@+id/radiobutton1.75x"
+                style="@style/RadioButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="40dp"
+                android:text="1.75x"
+                android:textColor="@drawable/radibutton_text_color"
+                tools:ignore="RtlSymmetry" />
+
+            <RadioButton
+                android:id="@+id/radiobutton2x"
+                style="@style/RadioButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="40dp"
+                android:text="2x"
+                android:textColor="@drawable/radibutton_text_color"
+                tools:ignore="RtlSymmetry" />
+        </RadioGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

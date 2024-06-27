@@ -66,6 +66,7 @@ class HistoryFragment : Fragment() {
                 // Liste boş ise bir metin göster
                 binding.historyImage.visibility = View.VISIBLE
                 binding.textHistory.visibility = View.VISIBLE
+                binding.imageButtonDeleteAll.visibility = View.GONE
 
 
             } else {
@@ -73,6 +74,8 @@ class HistoryFragment : Fragment() {
                 binding.rvhistory.visibility = View.VISIBLE
                 binding.historyImage.visibility = View.GONE
                 binding.textHistory.visibility = View.GONE
+                binding.imageButtonDeleteAll.visibility = View.VISIBLE
+
 
                 lightDataAdapter.submitList(lightDataList)
             }

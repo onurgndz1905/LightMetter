@@ -84,6 +84,21 @@
     <string name="continue_taking_your_measurements_without_watching_ads">Continue taking your measurements without watching ads.</string>
     <string name="weekly">Weekly</string>
     <string name="per_weekly">Per Weekly</string>
-    <string name="try_or_Free">"Try Three Days Free"</string>
-    <string name="Contiune">Continue</string>
+    <string name="try_or_Free">"Start your 3-day free trial"</string>
+    <string name="control_the_light_measurement_values_as_you_wish_and_protect_your_eye_health">Control the light measurement values as you wish and protect your eye health.</string>
+    <string name="enjoy_ad_free">Enjoy Ad-Free</string>
+    <string name="experience" tools:ignore="MissingTranslation">Experience</string>
+    <string name="experience_the_application_completely_free_for_3_days">Experience the application completely free for 3 days.</string>
+    <string name="give_your_recording_a_name">Give your recording a name</string>
+    <string name="cancel2">Cancel</string>
+    <string name="save">Save</string>
+    <string name="test_name">Test Name</string>
+    <string name="this_feature_is_premium_you_can_watch_rewarded_ads_or_consider_upgrade_options">This feature is premium, you can watch rewarded ads or consider upgrade options.</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="watch_ad">Watch Ad</string>
+    <string name="the_Ad_failed">The ad failed to load, please try again.</string>
+    <string name="your_record_will_be_deleted_are_you_sure">Your record will be deleted , are you sure ?</string>
+    <string name="this_feature_is_premium_you_can_watch_ads_or_use_upgrade_options">This feature is premium. You can watch ads or use upgrade options.</string>
+    <string name="you_are_using_premium">YOU ARE USING PREMIUM</string>
+    <string name="data">Data</string>
 </resources>

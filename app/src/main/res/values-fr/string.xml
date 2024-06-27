@@ -85,8 +85,23 @@
     <string name="customizing_settings_are_under_your_control" tools:ignore="ExtraTranslation">Les paramètres personnalisables sont sous votre contrôle!</string>
     <string name="weekly">Hebdomadaire</string>
     <string name="per_weekly">Par semaine</string>
-    <string name="try_or_Free">"Essayez trois jours gratuits"</string>
-    <string name="Contiune">Continuer</string>
-
+    <string name="try_or_Free">"Commencez votre essai gratuit de 3 jours"</string>
+    <string name="control_the_light_measurement_values_as_you_wish_and_protect_your_eye_health">Contrôlez les valeurs de mesure de la lumière comme vous le souhaitez et protégez la santé de vos yeux.</string>
     <string name="continue_taking_your_measurements_without_watching_ads">Continuez à prendre vos mesures sans regarder de publicités.</string>
+    <string name="enjoy_ad_free">Profitez sans publicité</string>
+    <string name="experience">Expérience</string>
+    <string name="experience_the_application_completely_free_for_3_days">Découvrez lapplication entièrement gratuitement pendant 3 jours.</string>
+    <string name="give_your_recording_a_name">Donnez un nom à votre enregistrement</string>
+    <string name="cancel2">Annuler</string>
+    <string name="save">Enregistrer</string>
+    <string name="test_name">Nom du test</string>
+    <string name="this_feature_is_premium_you_can_watch_rewarded_ads_or_consider_upgrade_options">Cette fonctionnalité est premium, vous pouvez regarder des publicités avec récompense ou envisager des options de mise à niveau.</string>
+    <string name="upgrade">Mise à niveau</string>
+    <string name="watch_ad">Regarder lannonce</string>
+    <string name="the_Ad_failed">Lannonce a pas pu être chargée, veuillez réessayer.</string>
+    <string name="your_record_will_be_deleted_are_you_sure">Votre enregistrement va être supprimé, en êtes-vous sûr ?</string>
+    <string name="this_feature_is_premium_you_can_watch_ads_or_use_upgrade_options">Cette fonctionnalité est premium. Vous pouvez regarder des annonces ou utiliser les options de mise à niveau.</string>
+    <string name="you_are_using_premium">VOUS UTILISEZ PREMIUM</string>
+    <string name="data">Données</string>
+
 </resources>

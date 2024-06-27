@@ -13,7 +13,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -23,12 +29,14 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
+import com.google.android.material.textfield.TextInputEditText
 import com.lux.light.meter.luminosity.R
 import com.lux.light.meter.luminosity.applovin.InterstitialAdManager
 import com.lux.light.meter.luminosity.data.LightData
 import com.lux.light.meter.luminosity.databinding.FragmentRecommendedLightBinding
 import com.lux.light.meter.luminosity.history.DateTimeUtil
 import com.lux.light.meter.luminosity.`object`.Addisplay
+import com.lux.light.meter.luminosity.`object`.Advert
 import com.lux.light.meter.luminosity.`object`.CurrentIndex
 import com.lux.light.meter.luminosity.`object`.IsPremium
 import com.lux.light.meter.luminosity.`object`.Lightvalue
@@ -131,22 +139,9 @@ class RecommendedLightFragment : Fragment(), SensorEventListener {
         Unit.unitsettings= savedUnit
         binding.titleRecommended.text = RecommendationName.recommendation_name
         binding.buttonsaveRecommended.setOnClickListener {
-            val dateTime = DateTimeUtil.getCurrentDateTime()
-
-            val lightData = LightData(
-                minLightValue = minLightValue,
-                maxLightValue = maxLightValue,
-                avgLightValue = sumLightValue / numMeasurements,
-                timestamp = System.currentTimeMillis(),
-                recordingDate = dateTime
-            )
-            lightDataViewModel.insert(lightData)
-            Toast.makeText(requireContext(), getString(R.string.data_saved), Toast.LENGTH_SHORT)
-                .show()
-
-
             Addisplay.number_of_ad_impressions++
             showInterstitialAdOnClick()
+            showInputDialog()
         }
 
         binding.imageButtonNext.setOnClickListener {
@@ -203,6 +198,136 @@ class RecommendedLightFragment : Fragment(), SensorEventListener {
             .replace(R.id.recommend_in, fragment)
             .commit()
     }
+
+    private fun showInputDialog() {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.input_dialog, null)
+        val input = dialogView.findViewById<TextInputEditText>(R.id.input_name)
+        val buttonSave = dialogView.findViewById<TextView>(R.id.save_input_text)
+        val buttonCancel = dialogView.findViewById<TextView>(R.id.cancel_text_input)
+
+        val builder = AlertDialog.Builder(requireContext(), R.style.CustomDialog)
+        builder.setView(dialogView)
+        val dialog = builder.create()
+
+        dialog.setOnShowListener {
+            dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+            input.imeOptions = EditorInfo.IME_ACTION_DONE
+            input.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    inputMethodManager.hideSoftInputFromWindow(input.windowToken, 0)
+                    input.clearFocus()
+                    true
+                } else {
+                    false
+                }
+            }
+        }
+
+        buttonSave.setOnClickListener {
+            val userInput = input.text.toString()
+            if (userInput.isEmpty()) {
+                Toast.makeText(requireContext(), "Please enter text", Toast.LENGTH_SHORT).show()
+            } else {
+                val newId = System.currentTimeMillis()
+
+                // Klavyeyi kapatma işlemi
+                val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(input.windowToken, 0)
+                input.clearFocus()
+
+                saveInputToSharedPreferences(userInput, newId)
+
+                if (!IsPremium.is_premium) {
+                    showUpgradeOrWatchAdDialog(newId)
+                } else {
+                    saveLightData(newId)
+                }
+                dialog.dismiss()
+            }
+        }
+
+        buttonCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+
+
+
+    private fun saveInputToSharedPreferences(input: String, id: Long) {
+        val sharedPreferences = requireContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("shared_$id", input)
+        editor.apply()
+    }
+
+
+    @SuppressLint("MissingInflatedId")
+    private fun showUpgradeOrWatchAdDialog(id: Long) {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.input_premium_popup, null)
+        val buttonWatchAd = dialogView.findViewById<Button>(R.id.watch_ad_button)
+        val buttonUpgrade = dialogView.findViewById<Button>(R.id.uprage_text_popup)
+        val button_close_popup = dialogView.findViewById<ImageButton>(R.id.close_popup_input)
+
+        val builder = AlertDialog.Builder(requireContext(), R.style.CustomDialog)
+        builder.setView(dialogView)
+        val dialog = builder.create()
+
+        dialog.setOnShowListener {
+            dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        }
+
+        buttonWatchAd.setOnClickListener {
+            showAd(id)
+            dialog.dismiss()
+        }
+
+        buttonUpgrade.setOnClickListener {
+            paywallViewModel.setBooleanValue(true)
+            dialog.dismiss()
+        }
+
+        button_close_popup.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    private fun showAd(id: Long) {
+        interstitialAdManager.loadInterstitialAd()
+        interstitialAdManager.showInterstitialAdWithCallback(
+            onSuccess = {
+                saveLightData(id) // Save data only if ad was successfully shown
+            },
+            onFailure = {
+                Toast.makeText(requireContext(),getString(R.string.the_Ad_failed),Toast.LENGTH_SHORT).show()
+            }
+        )
+    }
+    private fun saveLightData(id: Long) {
+        val dateTime = DateTimeUtil.getCurrentDateTime()
+
+        val lightData = LightData(
+            id = id,
+            minLightValue = minLightValue,
+            maxLightValue = maxLightValue,
+            avgLightValue = if (numMeasurements != 0) sumLightValue / numMeasurements else 0.0f,
+            timestamp = System.currentTimeMillis(), // Opsiyonel, zaman damgası eklemek istemiyorsanız burayı değiştirin
+            recordingDate = dateTime
+        )
+        lightDataViewModel.insert(lightData)
+        Toast.makeText(requireContext(), getString(R.string.data_saved), Toast.LENGTH_SHORT).show()
+        Addisplay.number_of_ad_impressions++
+        showInterstitialAdOnClick()
+    }
+
     private fun startMeasurement() {
         startTime = System.currentTimeMillis()
         sensorManager.registerListener(
@@ -573,8 +698,15 @@ class RecommendedLightFragment : Fragment(), SensorEventListener {
     }
 
     private fun showInterstitialAdOnClick() {
-        interstitialAdManager.loadInterstitialAd()
-        interstitialAdManager.showInterstitialAdnotlinechart() // Tabloyu sıfırla
+        if (Addisplay.number_of_ad_impressions%3 ==1){
+            interstitialAdManager.loadInterstitialAd()
+
+        }
+
+
+        interstitialAdManager.showInterstitialAd() // Tabloyu sıfırla
+
+
     }
 
     override fun onResume() {

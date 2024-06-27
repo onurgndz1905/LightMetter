@@ -13,12 +13,20 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.InputType
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -36,6 +44,8 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
+import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.FirebaseApp
 import com.lux.light.meter.luminosity.R
 import com.lux.light.meter.luminosity.applovin.InterstitialAdManager
 import com.lux.light.meter.luminosity.data.LightData
@@ -117,6 +127,8 @@ class LightmeterFragment : Fragment(), SensorEventListener {
         })
 
 
+        Unit.homeactiffe = true
+
         paywallviemodel2 = ViewModelProvider(requireActivity()).get(PaywallViewModel2::class.java)
 
 
@@ -149,6 +161,8 @@ class LightmeterFragment : Fragment(), SensorEventListener {
 
         binding.buttonstartstop.setOnClickListener {
             Log.d("ButtonClicked", "Button clicked")
+            Addisplay.number_of_ad_impressions++
+            showInterstitialAdOnClick()
 
             if (Unit.isMeasurementRunning) {
                 stopMeasurement()
@@ -166,12 +180,39 @@ class LightmeterFragment : Fragment(), SensorEventListener {
             Log.d("ButtonClicked", "isMeasurementRunning: ${Unit.isMeasurementRunning}")
         }
 
-
 // Kullanıcı etkileşiminden sonra marquee'nin çalıştığından emin olun
         binding.buttonRestart.setOnClickListener {
-            restartMeasurement()
+            // Custom layout inflater
             Addisplay.number_of_ad_impressions++
             showInterstitialAdOnClick()
+            val inflater = LayoutInflater.from(requireContext())
+            val dialogView = inflater.inflate(R.layout.restert_popup, null)
+
+            val builder = AlertDialog.Builder(requireContext(), R.style.CustomDialog)
+            builder.setView(dialogView)
+            val dialog = builder.create()
+
+            dialog.setOnShowListener {
+                dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+                dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+            }
+
+            dialog.show()
+            // Custom dialog buttons
+            val buttonYes = dialogView.findViewById<TextView>(R.id.delete_ad_button)
+            val buttonCancel = dialogView.findViewById<TextView>(R.id.cancel_text_popup)
+
+            buttonYes.setOnClickListener {
+                // Evet butonuna tıklandığında restartMeasurement() fonksiyonunu çalıştır
+                restartMeasurement()
+
+                dialog.dismiss()
+            }
+
+            buttonCancel.setOnClickListener {
+                // İptal butonuna tıklandığında sadece dialog kapansın
+                dialog.dismiss()
+            }
         }
 
 
@@ -191,29 +232,26 @@ class LightmeterFragment : Fragment(), SensorEventListener {
         binding.imageButtonNext.setOnClickListener {
             if (currentFragmentIndex < fragmentList.size - 1) {
                 currentFragmentIndex++
-                Log.e("FRAGMENT","${currentFragmentIndex}")
-                if (currentFragmentIndex >=2 && !IsPremium.is_premium ){
+                Log.e("FRAGMENT", "${currentFragmentIndex}")
+                if (currentFragmentIndex >= 2 && !IsPremium.is_premium) {
                     replaceFragment(BlurIspremiumFragment())
                 } else {
                     replaceFragment(fragmentList[currentFragmentIndex])
                 }
 
                 if (currentFragmentIndex == 4) {
-
                 }
                 // Değişikliği objeye kaydediyoruz
                 CurrentIndex.setCurrentIndex(requireContext(), currentFragmentIndex)
             }
-            Addisplay.number_of_ad_impressions ++
+            Addisplay.number_of_ad_impressions++
             showInterstitialAdOnClick()
         }
 
         binding.imageButtonBack.setOnClickListener {
-
-
             if (currentFragmentIndex > 0) {
                 currentFragmentIndex--
-                Log.e("FRAGMENT","${currentFragmentIndex}")
+                Log.e("FRAGMENT", "${currentFragmentIndex}")
                 if (currentFragmentIndex >= 2 && !IsPremium.is_premium) {
                     replaceFragment(BlurIspremiumFragment())
                 } else {
@@ -221,14 +259,14 @@ class LightmeterFragment : Fragment(), SensorEventListener {
                 }
 
                 if (currentFragmentIndex <= 0) {
-
                 }
                 // Değişikliği objeye kaydediyoruz
                 CurrentIndex.setCurrentIndex(requireContext(), currentFragmentIndex)
             }
-            Addisplay.number_of_ad_impressions ++
+            Addisplay.number_of_ad_impressions++
             showInterstitialAdOnClick()
         }
+
 
         replaceFragment(fragmentList[currentFragmentIndex])
 
@@ -267,7 +305,7 @@ class LightmeterFragment : Fragment(), SensorEventListener {
 
         lightDataViewModel = ViewModelProvider(this).get(LightDataViewModel::class.java)
         binding.SaveButton.setOnClickListener {
-            if (!IsPremium.is_premium){
+         /*   if (!IsPremium.is_premium){
                 paywallViewModel.setBooleanValue(true)
 
             }
@@ -280,7 +318,6 @@ class LightmeterFragment : Fragment(), SensorEventListener {
                     avgLightValue = if (numMeasurements != 0) sumLightValue / numMeasurements else 0.0f,
                     timestamp = System.currentTimeMillis(), // Opsiyonel, zaman damgası eklemek istemiyorsanız burayı değiştirin
                     recordingDate = dateTime
-
                 )
                 lightDataViewModel.insert(lightData)
                 Toast.makeText(requireContext(), getString(R.string.data_saved), Toast.LENGTH_SHORT).show()
@@ -288,11 +325,158 @@ class LightmeterFragment : Fragment(), SensorEventListener {
                 showInterstitialAdOnClick()
             }
 
-
+ */
         }
 
 
+        binding.SaveButton.setOnClickListener {
+            Addisplay.number_of_ad_impressions++
+            showInterstitialAdOnClick()
+            showInputDialog()
+        }
+
     }
+
+    private fun showInputDialog() {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.input_dialog, null)
+        val input = dialogView.findViewById<TextInputEditText>(R.id.input_name)
+        val buttonSave = dialogView.findViewById<TextView>(R.id.save_input_text)
+        val buttonCancel = dialogView.findViewById<TextView>(R.id.cancel_text_input)
+
+        val builder = AlertDialog.Builder(requireContext(), R.style.CustomDialog)
+        builder.setView(dialogView)
+        val dialog = builder.create()
+
+        dialog.setOnShowListener {
+            dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+            input.imeOptions = EditorInfo.IME_ACTION_DONE
+            input.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    inputMethodManager.hideSoftInputFromWindow(input.windowToken, 0)
+                    input.clearFocus()
+                    true
+                } else {
+                    false
+                }
+            }
+        }
+
+        buttonSave.setOnClickListener {
+            val userInput = input.text.toString()
+            if (userInput.isEmpty()) {
+                Toast.makeText(requireContext(), "Please enter text", Toast.LENGTH_SHORT).show()
+            } else {
+                val newId = System.currentTimeMillis()
+
+                // Klavyeyi kapatma işlemi
+                val inputMethodManager = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(input.windowToken, 0)
+                input.clearFocus()
+
+                saveInputToSharedPreferences(userInput, newId)
+
+                if (!IsPremium.is_premium) {
+                    showUpgradeOrWatchAdDialog(newId)
+                } else {
+                    saveLightData(newId)
+                }
+                dialog.dismiss()
+            }
+        }
+
+        buttonCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+
+
+
+
+    private fun saveInputToSharedPreferences(input: String, id: Long) {
+        val sharedPreferences = requireContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("shared_$id", input)
+        editor.apply()
+    }
+
+
+    @SuppressLint("MissingInflatedId")
+    private fun showUpgradeOrWatchAdDialog(id: Long) {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.input_premium_popup, null)
+        val buttonWatchAd = dialogView.findViewById<Button>(R.id.watch_ad_button)
+        val buttonUpgrade = dialogView.findViewById<Button>(R.id.uprage_text_popup)
+        val button_close_popup = dialogView.findViewById<ImageButton>(R.id.close_popup_input)
+
+
+        val builder = AlertDialog.Builder(requireContext(), R.style.CustomDialog)
+        builder.setView(dialogView)
+        val dialog = builder.create()
+
+        dialog.setOnShowListener {
+            dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        }
+
+        buttonWatchAd.setOnClickListener {
+            showAd(id) // Show ad and save data only after ad is watched
+            dialog.dismiss()
+        }
+
+        buttonUpgrade.setOnClickListener {
+            // Premium yükseltme işlemini burada yapın
+            paywallViewModel.setBooleanValue(true)
+            dialog.dismiss()
+        }
+
+        button_close_popup.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+
+
+
+
+
+    private fun showAd(id: Long) {
+        interstitialAdManager.loadInterstitialAd()
+        interstitialAdManager.showInterstitialAdWithCallback(
+            onSuccess = {
+                saveLightData(id) // Save data only if ad was successfully shown
+            },
+            onFailure = {
+                Toast.makeText(requireContext(),getString(R.string.the_Ad_failed),Toast.LENGTH_SHORT).show()
+            }
+        )
+    }
+
+
+
+    private fun saveLightData(id: Long) {
+        val dateTime = DateTimeUtil.getCurrentDateTime()
+
+        val lightData = LightData(
+            id = id,
+            minLightValue = minLightValue,
+            maxLightValue = maxLightValue,
+            avgLightValue = if (numMeasurements != 0) sumLightValue / numMeasurements else 0.0f,
+            timestamp = System.currentTimeMillis(), // Opsiyonel, zaman damgası eklemek istemiyorsanız burayı değiştirin
+            recordingDate = dateTime
+        )
+        lightDataViewModel.insert(lightData)
+        Toast.makeText(requireContext(), getString(R.string.data_saved), Toast.LENGTH_SHORT).show()
+        Addisplay.number_of_ad_impressions++
+        showInterstitialAdOnClick()
+    }
+
     private fun replaceFragment(fragment: Fragment) {
         childFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainerView, fragment)
@@ -306,10 +490,9 @@ class LightmeterFragment : Fragment(), SensorEventListener {
 
 
     private fun startMeasurement() {
-        startTime = System.currentTimeMillis()
         sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL)
-        restartMeasurement()
     }
+
 
     private fun stopMeasurement() {
         sensorManager.unregisterListener(this)
@@ -319,15 +502,16 @@ class LightmeterFragment : Fragment(), SensorEventListener {
         //reklam Interstitial
 
     private fun showInterstitialAdOnClick() {
-        interstitialAdManager.loadInterstitialAd()
+        FirebaseApp.initializeApp(requireContext())
+
+        if (Addisplay.number_of_ad_impressions%3 ==1){
+            interstitialAdManager.loadInterstitialAd()
+        }
         interstitialAdManager.showInterstitialAd() // Tabloyu sıfırla
         if (Advert.advert){
             restartMeasurement()
         }
     }
-
-
-
 
     private fun initializeChart() {
         chart?.description?.isEnabled = false
