@@ -10,8 +10,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.lux.light.meter.luminosity.MainActivity
@@ -66,6 +69,16 @@ class PaywallFragment : Fragment() {
                 Toast.makeText(requireContext(), "Premium true", Toast.LENGTH_SHORT).show()
             }
         }
+        val imageView: ImageView = binding.imageView8
+        val imageUrl = R.drawable.premiumbg
+
+        Glide.with(this)
+            .load(imageUrl)
+            .apply(RequestOptions()
+                .centerCrop()
+            )
+            .into(imageView)
+
         return binding.root
     }
 

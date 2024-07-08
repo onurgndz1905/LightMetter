@@ -166,7 +166,7 @@ class LightmeterFragment : Fragment(), SensorEventListener {
 
             if (Unit.isMeasurementRunning) {
                 stopMeasurement()
-                binding.buttonstartstop.text = getString(R.string.start_test)
+                binding.buttonstartstop.text = getString(R.string.continue2)
                 dotAnimator.cancel() // Yanıp sönen animasyonu durdur
                 Log.d("ButtonClicked", "Measurement stopped")
             } else {
@@ -467,7 +467,7 @@ class LightmeterFragment : Fragment(), SensorEventListener {
             id = id,
             minLightValue = minLightValue,
             maxLightValue = maxLightValue,
-            avgLightValue = if (numMeasurements != 0) sumLightValue / numMeasurements else 0.0f,
+            avgLightValue = if (numMeasurements != 0) (sumLightValue / numMeasurements).toInt().toFloat() else 0.0f,
             timestamp = System.currentTimeMillis(), // Opsiyonel, zaman damgası eklemek istemiyorsanız burayı değiştirin
             recordingDate = dateTime
         )

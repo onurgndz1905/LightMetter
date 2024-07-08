@@ -103,5 +103,6 @@
     <string name="this_feature_is_premium_you_can_watch_ads_or_use_upgrade_options">Cette fonctionnalité est premium. Vous pouvez regarder des annonces ou utiliser les options de mise à niveau.</string>
     <string name="you_are_using_premium">VOUS UTILISEZ PREMIUM</string>
     <string name="data">Données</string>
-
+    <string name="study_desk_2">Bureau détude 2</string>
+    <string name="library_2">Bibliothèque 2</string>
 </resources>

@@ -96,6 +96,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/red_delete"
             android:text="@string/delete"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

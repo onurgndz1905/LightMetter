@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity(),MaxAdRevenueListener {
             true
 
         }
-       checkPremium()
+      checkPremium()
 
         if (!IsPremium.is_premium){
             paywallViewModel.setBooleanValue(true)
